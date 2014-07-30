@@ -1,5 +1,10 @@
 <?php include 'partials/header.php'; ?>
 
+<div id="wrapper" style="padding-top:75px;">
+
+<?php include 'partials/nav.php'; ?>
+
+
 
 
 <div class="container">
@@ -16,9 +21,9 @@
         <hr>
 
         <div class="row" style="">
-            <div class="stage">
+            <!-- <div class="stage">
                <div id="peach" name="peach" class="peach char"></div>
-            </div>
+            </div> -->
             <div class="stage">
                <div id="zitz" name="zitz" class="zitz char"></div>
             </div>
@@ -48,5 +53,7 @@
 </div>
 
 
+
+</div><!-- #wrapper -->
 
 <?php include 'partials/footer.php'; ?>

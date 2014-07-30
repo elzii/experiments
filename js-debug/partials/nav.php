@@ -8,19 +8,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">8-Bit CSS</a>
+      <a class="navbar-brand" href="#">JS-Debug</a>
     </div>
-    <div class="collapse navbar-collapse">
+<!--     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class=" dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Characters <span class="caret"></span></a>
-          <ul class="character-nav dropdown-menu" role="menu">
-            <li><a href="characters.json" data-pjax>JSON Feed</a></li>
-            <li class="divider"></li>
-            <li class="dropdown-header">Character List</li>
+        <li class="character-nav dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/characters.php" data-pjax>Data Export</a></li>
+            <li><a href="/characters.json" data-pjax>Charts &amp; Graphs</a></li>
           </ul>
         </li>
       </ul>
-    </div><!--/.nav-collapse -->
+    </div> -->
   </div>
 </div>

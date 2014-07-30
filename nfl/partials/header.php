@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Playground</title>
+    <title>NFL Schedule App</title>
 
     <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="../assets/css/style.css" rel="stylesheet">
@@ -18,6 +18,8 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../favicon.png">
     <link rel="apple-touch-icon" sizes="120x120" href="../favicon.png">
     <link rel="apple-touch-icon" sizes="152x152" href="../favicon.png">
+
+    
 
 </head>
 
