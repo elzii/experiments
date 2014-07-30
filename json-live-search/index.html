@@ -10,6 +10,7 @@
     <title>JSON Select</title>
 
     <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/highlight-monokai.css" rel="stylesheet">
     <link href="../assets/css/style.css" rel="stylesheet">
 
     <style>
@@ -18,6 +19,7 @@
       #results ul { list-style-type:none; margin:15px 0 5px 0; padding:0; }
       #results ul li { cursor:pointer; padding: 10px; margin:0; }
       #results ul li:hover { background-color:#eee; }
+      pre { background-color:transparent; padding:0; border:0; }
     </style>
 </head>
 
@@ -30,17 +32,86 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#">JSON Live Search Demo</a>
     </div>
+    <ul class="nav navbar-nav">
+      <li><a href="hospitals.json" data-pjax>hospitals.json</a></li>
+    </ul>
   </div>
 </div>
 
-  <div class="container">
-
+<!-- Content -->
+<div class="container">
+<div class="row">
     
+
+  <div class="col-md-6">
+
+
     <div id="search">
       <input type="text" id="query" placeholder="Search">
       <input type="text" id="selection" style="color:red;" placeholder="Selection - this input will be hidden." disabled="true">
       <div id="results"></div>
     </div>
+    
+  </div>
+    
+    
+  <div class="col-md-6">
+
+<pre><code class="lang-js">
+  $('#query').keyup(function() {
+      
+    // get the value of the text input
+    var query = $('#query').val();
+
+    // set up regex based for query (text input value)
+    var myExp = new RegExp(query, 'i');
+    
+    // use jquery's getJSON function to load up json file
+    $.getJSON('hospitals.json', function(data) {
+        
+      // create the ul that the results will live in
+      var output = '&lt;ul id="searchresult"&gt;';
+      
+      // for each object in the json file
+      $.each(data, function(key, val) {
+
+          // if the name property matches our search string
+          if ( (val.name.search(myExp) != -1) ) {
+
+              // then append it to the results list
+              output += '&lt;li&gt;' + val.name + '&lt;/li&gt;';
+          }
+      });
+
+      // closing tag for result ul
+      output += '&lt;/ul&gt;';
+
+      // if the search query is not empty, append result
+      if ( query != '' ) {
+        $('#results').html(output);
+      } 
+      // otherwise empty the list
+      else {
+        $('#results').empty();
+      }
+      
+      // add a click event handler to each result
+      $('#searchresult li').click(function (event) {
+
+        var $this     = $(this),
+            selection = $('#selection'),
+            name      = $(this).text();
+        
+        // take its value and add it as the selection value
+        selection.val(name);
+
+      });
+    });
+  });
+</code></pre>
+
+
+  </div>
 
 
 
@@ -54,6 +125,7 @@
 <!-- JavaScript -->
 <script src="../assets/js/jquery-1.11.1.min.js"></script>
 <script src="../assets/js/bootstrap.js"></script>
+<script src="../assets/js/highlight.min.js"></script>
 
 
 <script>
@@ -99,9 +171,8 @@
 
   });
 
-
-
 </script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 </body>
 </html>
