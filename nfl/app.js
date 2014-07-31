@@ -292,10 +292,8 @@
 
       var self = this;
 
-      this.getScheduleByWeek({ week : 2 }, function (result) {
-        // console.log(result);
-        self.render(result);
-      });
+      this.renderScheduleByWeekFilter('#nfl-week-filter', 16);
+      this.renderSchedule();
         
       
     },
@@ -352,39 +350,6 @@
 
     },
 
-
-    render: function(data) {
-
-      var self     = this,
-          $content = $('#content'),
-          games    = data.games;
-
-      $.each(games, function (index, item) {
-
-        console.log(index,item);
-
-        $content.append('\
-          <div class="col-lg-4"> \
-            <div class="panel panel-default"> \
-              <div class="panel-heading clearfix"> \
-                <div class="col-lg-4 text-left"><img src="'+self.teamLogoImageURL(item.away)+'"/></div> \
-                <div class="col-lg-4 text-center"><h5 style="margin:22px 0 0 0;line-height:1;">'+item.away+' @ '+item.home+'</h5></div> \
-                <div class="col-lg-4"><img src="'+self.teamLogoImageURL(item.home)+'"/></div> \
-              </div> \
-              <div class="panel-body"> \
-                <h6>'+item.scheduled+'</h6> \
-                <p>'+item.venue.name+'</p> \
-                <p class="text-center"><img class="img-stadium" src="'+self.teamStadiumImageURL(item.home)+'"/> </p> \
-              </div> \
-            </div> \
-          </div> \
-        ');
-
-      })
-
-      
-    },
-
     getScheduleByWeek: function(options, callback) {
 
       if ( options.week === undefined ) { options.week = '1'; }
@@ -396,6 +361,147 @@
       });
 
       return this.getJSON(url, callback);
+    },
+
+    renderScheduleByWeek: function(data, id) {
+
+      var self     = this,
+          $content = $('#content'),
+          games    = data.games;
+
+      $content.append('<div class="row week-'+id+'"><br><br></div>');
+
+      $.each(games, function (index, item) {
+
+        // console.log(index,item);
+
+        $('.week-'+id).append('\
+          <div class="col-lg-4"> \
+            <div class="panel panel-default"> \
+              <div class="panel-heading clearfix"> \
+                <div class="nfl-away col-lg-4 text-left"><img src="'+self.teamLogoImageURL(item.away)+'"/></div> \
+                <div class="nfl-vs col-lg-4 text-center"><h5 style="margin:22px 0 0 0;line-height:1;">'+item.away+' @ '+item.home+'</h5></div> \
+                <div class="nfl-home col-lg-4"><img src="'+self.teamLogoImageURL(item.home)+'"/></div> \
+              </div> \
+              <div class="panel-body text-center"> \
+                <div style="position:relative;"> \
+                  <img class="nfl-img-stadium" src="'+self.teamStadiumImageURL(item.home)+'"> \
+                  <h5 class="nfl-stadium">'+item.venue.name+'</h5> \
+                </div> \
+              </div> \
+              <div class="panel-footer text-center"> \
+                <h4>'+item.scheduled.substr(0,10)+'</h4> \
+              </div> \
+            </div> \
+          </div> \
+        ');
+
+      })
+
+    },
+
+    renderSchedule: function() {
+      
+      var self = this;
+
+      // self.getScheduleByWeek({ week : 1 }, function (result) {
+      //   self.renderScheduleByWeek(result, 1);
+        
+      //   self.getScheduleByWeek({ week : 2 }, function (result) {
+      //     self.renderScheduleByWeek(result, 2);
+          
+      //     self.getScheduleByWeek({ week : 3 }, function (result) {
+      //       self.renderScheduleByWeek(result, 3);
+          
+      //       self.getScheduleByWeek({ week : 4 }, function (result) {
+      //         self.renderScheduleByWeek(result, 4);
+
+      //         self.getScheduleByWeek({ week : 5 }, function (result) {
+      //           self.renderScheduleByWeek(result, 5);
+                
+      //           self.getScheduleByWeek({ week : 6 }, function (result) {
+      //             self.renderScheduleByWeek(result, 6);
+
+      //             self.getScheduleByWeek({ week : 7 }, function (result) {
+      //               self.renderScheduleByWeek(result, 7);
+                    
+      //               self.getScheduleByWeek({ week : 8 }, function (result) {
+      //                 self.renderScheduleByWeek(result, 8);
+                      
+      //                 self.getScheduleByWeek({ week : 9 }, function (result) {
+      //                   self.renderScheduleByWeek(result, 9);
+                        
+      //                   self.getScheduleByWeek({ week : 10 }, function (result) {
+      //                     self.renderScheduleByWeek(result, 10);
+                          
+      //                     self.getScheduleByWeek({ week : 11 }, function (result) {
+      //                       self.renderScheduleByWeek(result, 11);
+                            
+      //                       self.getScheduleByWeek({ week : 12 }, function (result) {
+      //                         self.renderScheduleByWeek(result, 12);
+                              
+      //                         self.getScheduleByWeek({ week : 13 }, function (result) {
+      //                           self.renderScheduleByWeek(result, 13);
+                                
+      //                           self.getScheduleByWeek({ week : 14 }, function (result) {
+      //                             self.renderScheduleByWeek(result, 14);
+                                  
+      //                             self.getScheduleByWeek({ week : 15 }, function (result) {
+      //                               self.renderScheduleByWeek(result, 15);
+                                    
+      //                               self.getScheduleByWeek({ week : 16 }, function (result) {
+      //                                 self.renderScheduleByWeek(result, 16);
+      //                               });
+      //                             });
+      //                           });
+      //                         });
+      //                       });
+      //                     });
+      //                   });
+      //                 });
+      //               });
+      //             });
+      //           });
+      //         });
+      //       });
+      //     });
+      //   });
+      // });
+
+      self.getScheduleByWeek({ week : 1 }, function (result) {
+        self.renderScheduleByWeek(result, 1);
+      });
+
+
+    },
+
+    renderScheduleByWeekFilter: function(element, week_count) {
+      var self = this;
+
+      if ( element === undefined || week_count === undefined ) return;
+
+      for ( var i=1; i<week_count+1; i++) {
+        $(element).append('<a data-week='+i+' type="button" style="margin:0 10px 10px 0;" class="nfl-week-filter btn btn-default btn-lg">'+i+'</a>');
+      }
+
+      $('.nfl-week-filter:first').addClass('active');
+
+      $('.nfl-week-filter').click(function (event) {
+
+        var $this     = $(this),
+            week_num  = $this.data('week'),
+            $content  = $('#content');
+
+        $this.siblings().removeClass('active');
+        $this.addClass('active');
+        $content.empty();
+
+        self.getScheduleByWeek({ week : week_num }, function (result) {
+          self.renderScheduleByWeek(result, week_num );
+        });
+
+      });
+
     },
 
 

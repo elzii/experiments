@@ -13,7 +13,15 @@
     <link href="../assets/css/bootstrap-docs.css" rel="stylesheet">
     <link href="../assets/css/highlight-monokai.css" rel="stylesheet">
     <link href="../assets/css/style.css" rel="stylesheet">
+    
 
+    <!-- Favicon(s) -->
+    <link rel="shortcut icon" href="../favicon.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="../favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../favicon.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../favicon.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../favicon.png">
+    
     <style>
       pre { background-color:transparent; padding:0; border:0; }
     </style>
@@ -206,6 +214,53 @@
 
 </article>
 
+
+
+
+
+
+<article id="sugar-method">
+  <h2>Insert HTML from external script</h2>
+  <p>Simple example taken from <a href="http://humanitybox.com/">http://humanitybox.com/</a> </p>
+
+<pre><code class="lang-html">
+&lt;script&gt;
+(function(document) {
+    'use strict';
+    var campaigns = [{
+        "uuid": "mny",
+        "url": "http://gfwd.at/SLEYFG",
+        "title": "LynnGrayHanlon",
+        "blurb": "This fund for Lynn Gray Hanlon (Cardiello) will be used for Lynn's medical, travel, and related expenses not covered by insurance.",
+        "goal": "350000.00",
+        "image_url": "http://res.cloudinary.com/gf/image/upload//v1375810953/1LBebfxoRUqeoKJZiDXhNg.jpg"
+    }, {
+        "uuid": "7361",
+        "url": "http://gfwd.at/SLF14j",
+        "title": "Love for Christian Buchanan",
+        "blurb": "This fundraiser is to help with Christian's medical care not covered by insurance, and expenses related to Christianâ€™s medical care.",
+        "goal": "100000.00",
+        "image_url": "http://res.cloudinary.com/gf/image/upload//v1375902781/xevDA2c8Q7aWViAmRnr3nQ.jpg"
+    }];
+    var randomIndex = Math.floor((Math.random() * campaigns.length) + 0);
+    var campaign = campaigns[randomIndex];
+    var html = "&lt;style&gt;a.humanitybox { background: white; border-radius: 5px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; color: #1D1D1D; display: block; font-family: Helvetica; padding: 10px; } a.humanitybox:hover { text-decoration: none; } a.humanitybox span.humanitybox-img-container { display: block; text-align: center; } a.humanitybox img { border-radius: 5px; margin-bottom: 11px; max-height: 120px; } span.humanitybox-title { border-bottom: 1px solid #DDD; color: #6EC8CC; display: block; font-size: 14px; font-weight: bold; line-height: 18px; margin-bottom: 14px; margin-top: 0; overflow: hidden; padding-bottom: 10px; text-align: center; text-overflow: ellipsis; } a.humanitybox:hover span.humanitybox-title { color: #44989C; } span.humanitybox-blurb { border-bottom: 1px solid #DDD; color: #6F6F6F; display: block; font-size: 11px; font-weight: bold; line-height: 14px; padding: 1px 0 12px 0; text-align: center; } a.humanitybox-link { background: white; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; color: #6F6F6F; display: block; font: bold 11px Helvetica; font-size: 11px; font-weight: bold; letter-spacing: 1px; padding: 10px; padding-top: 0; text-align: center; text-decoration: none; text-transform: uppercase; } a.humanitybox-link span, a.humanitybox-link img { opacity: .6; } a.humanitybox-link:hover span, a.humanitybox-link:hover img { opacity: 1; } a.humanitybox-link img { margin-right: 5px; vertical-align: -4px; width: 16px; }&lt;/style&gt;";
+    html += '&lt;a class="humanitybox" href="' + campaign.url + '"&gt;';
+    html += '  &lt;span class="humanitybox-title"&gt;' + campaign.title + '&lt;/span&gt;';
+    html += '  &lt;span class="humanitybox-img-container"&gt;&lt;img src="' + campaign.image_url + '" /&gt;&lt;/span&gt;';
+    html += '  &lt;span class="humanitybox-blurb"&gt;' + campaign.blurb + '&lt;/span&gt;';
+    html += '&lt;/a&gt;';
+    html += '&lt;a class="humanitybox-link" href="http://humanitybox.com/"&gt;';
+    html += '  &lt;img src="http://humanitybox.com/favicon.ico" /&gt; &lt;span&gt;Humanity Box&lt;/span&gt;'
+    html += '&lt;/a&gt;';
+    document.write(html);
+}(document));
+&lt;/script&gt;
+</code></pre>
+
+<br><br><br>
+
+</article>
 
 
 
