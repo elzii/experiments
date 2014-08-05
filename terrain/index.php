@@ -6,7 +6,7 @@
 
 
 
-<canvas id="display" width="1" height="1" style="display:block;background-color:#000;width:90%;height:90%;margin:auto;"/>
+<canvas id="display" width="1" height="1" style="display:block;background-color:#000;width:90%;height:60%;margin:5% auto 0 auto;"/>
 
 
 

@@ -424,7 +424,7 @@
   var height = display.height = window.innerHeight;
 
   var terrain = new Terrain(9);
-  terrain.generate(0.7);
+  terrain.generate(0.95);
   terrain.draw(ctx, width, height);
 
 

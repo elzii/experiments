@@ -9,11 +9,17 @@
     <style>
       .third { width: 33.333333333337%; float:left; }
         
-      .panel-header {
-        background-color: #162754;
+      .panel-heading {
+        background-color: #162754 !important;
+        border-color: #0a1027 !important;
+        color: #fff !important;
+        height:75px;
       }
 
-      .nfl-home, .nfl-vs, .nfl-away {padding:0;}
+      .nfl-home, .nfl-vs, .nfl-away {
+        padding:0;
+        width: 33.333333333337%; float:left;
+      }
       
       .nfl-away { text-align:left; }
       .nfl-away img, .nfl-home img { 

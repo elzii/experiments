@@ -278,29 +278,55 @@
 
   App.NFL = {
 
+    /**
+     * Config
+     *
+     * Configuration options for use within app, similar to global vars
+     */
     config : {
       api_key : 'tes3hmdt8q65zyyn3ud4vz3r',
-      year : '2014'
+      year    : '2014',
+      weeks   : 17
     },
 
+
+
+    /**
+     * Elements
+     * 
+     * Id / class names of elements for rendering or otherwise
+     */
     elements : {
-      
+      container   : '#content',
+      week_filter : '#nfl-week-filter'
     },
 
 
+
+    /**
+     * Initialize
+     * 
+     * Initializes the app
+     *
+     */
     init: function() {
 
       var self = this;
 
       this.renderScheduleByWeekFilter('#nfl-week-filter', 16);
       this.renderSchedule();
-        
       
     },
 
+
+
     /**
      * Build URL
-     * Example: http://api.sportsdatallc.org/nfl-t1/2013/REG/1/schedule.json?api_key=tes3hmdt8q65zyyn3ud4vz3r
+     * 
+     * Build the URL to fetch JSON passing in various parameters as desired
+     *
+     * @param  [object] (options) object of parameter options
+     * @return [string] http://api.sportsdatallc.org/nfl-t1/2013/REG/1/schedule.json?api_key=tes3hmdt8q65zyyn3ud4vz3r
      */
     buildURL: function(options) {
 
@@ -319,6 +345,18 @@
 
     },
 
+
+
+    /**
+     * Get JSON
+     * 
+     * Checks to see if we have JSON data in localStorage by request URL as key,
+     * if not, make an AJAX call to go get it from API 
+     *
+     * @param [string] (url)      the URL (built by buildURL())
+     * @param [func]   (callback) callback function - call render methods here
+     * @return n/a
+     */
     getJSON: function(url, callback) {
       
       url = url || null;
@@ -350,6 +388,17 @@
 
     },
 
+
+
+    /**
+     * Get Schedule By Week
+     * 
+     * Builds URL for a weekly schedule and runs getJSON()
+     *
+     * @param [object] (options)  object with parameters for year or week
+     * @param [func]   (callback) callback function - call render methods here
+     * @return getJSON()
+     */
     getScheduleByWeek: function(options, callback) {
 
       if ( options.week === undefined ) { options.week = '1'; }
@@ -363,10 +412,20 @@
       return this.getJSON(url, callback);
     },
 
+
+
+    /**
+     * Render Schedule By Week
+     * 
+     * Renders all games from a schedule API call onto the page
+     *
+     * @param [object] (data) json object with game information
+     * @param [string] (id)   a string/int to use as an identifier on DOM elements
+     */
     renderScheduleByWeek: function(data, id) {
 
       var self     = this,
-          $content = $('#content'),
+          $content = $(App.NFL.elements.container),
           games    = data.games;
 
       $content.append('<div class="row week-'+id+'"><br><br></div>');
@@ -379,9 +438,9 @@
           <div class="col-lg-4"> \
             <div class="panel panel-default"> \
               <div class="panel-heading clearfix"> \
-                <div class="nfl-away col-lg-4 text-left"><img src="'+self.teamLogoImageURL(item.away)+'"/></div> \
-                <div class="nfl-vs col-lg-4 text-center"><h5 style="margin:22px 0 0 0;line-height:1;">'+item.away+' @ '+item.home+'</h5></div> \
-                <div class="nfl-home col-lg-4"><img src="'+self.teamLogoImageURL(item.home)+'"/></div> \
+                <div class="nfl-away  text-left"><img src="'+self.teamLogoImageURL(item.away)+'"/></div> \
+                <div class="nfl-vs  text-center"><h5 style="margin:22px 0 0 0;line-height:1;">'+item.away+' @ '+item.home+'</h5></div> \
+                <div class="nfl-home "><img src="'+self.teamLogoImageURL(item.home)+'"/></div> \
               </div> \
               <div class="panel-body text-center"> \
                 <div style="position:relative;"> \
@@ -400,87 +459,41 @@
 
     },
 
+
+
+    /**
+     * Render Schedule
+     * 
+     * Wrapper function for getScheduleByWeek() to render multiple weeks. !REDUNDANT
+     *
+     */
     renderSchedule: function() {
       
       var self = this;
-
-      // self.getScheduleByWeek({ week : 1 }, function (result) {
-      //   self.renderScheduleByWeek(result, 1);
-        
-      //   self.getScheduleByWeek({ week : 2 }, function (result) {
-      //     self.renderScheduleByWeek(result, 2);
-          
-      //     self.getScheduleByWeek({ week : 3 }, function (result) {
-      //       self.renderScheduleByWeek(result, 3);
-          
-      //       self.getScheduleByWeek({ week : 4 }, function (result) {
-      //         self.renderScheduleByWeek(result, 4);
-
-      //         self.getScheduleByWeek({ week : 5 }, function (result) {
-      //           self.renderScheduleByWeek(result, 5);
-                
-      //           self.getScheduleByWeek({ week : 6 }, function (result) {
-      //             self.renderScheduleByWeek(result, 6);
-
-      //             self.getScheduleByWeek({ week : 7 }, function (result) {
-      //               self.renderScheduleByWeek(result, 7);
-                    
-      //               self.getScheduleByWeek({ week : 8 }, function (result) {
-      //                 self.renderScheduleByWeek(result, 8);
-                      
-      //                 self.getScheduleByWeek({ week : 9 }, function (result) {
-      //                   self.renderScheduleByWeek(result, 9);
-                        
-      //                   self.getScheduleByWeek({ week : 10 }, function (result) {
-      //                     self.renderScheduleByWeek(result, 10);
-                          
-      //                     self.getScheduleByWeek({ week : 11 }, function (result) {
-      //                       self.renderScheduleByWeek(result, 11);
-                            
-      //                       self.getScheduleByWeek({ week : 12 }, function (result) {
-      //                         self.renderScheduleByWeek(result, 12);
-                              
-      //                         self.getScheduleByWeek({ week : 13 }, function (result) {
-      //                           self.renderScheduleByWeek(result, 13);
-                                
-      //                           self.getScheduleByWeek({ week : 14 }, function (result) {
-      //                             self.renderScheduleByWeek(result, 14);
-                                  
-      //                             self.getScheduleByWeek({ week : 15 }, function (result) {
-      //                               self.renderScheduleByWeek(result, 15);
-                                    
-      //                               self.getScheduleByWeek({ week : 16 }, function (result) {
-      //                                 self.renderScheduleByWeek(result, 16);
-      //                               });
-      //                             });
-      //                           });
-      //                         });
-      //                       });
-      //                     });
-      //                   });
-      //                 });
-      //               });
-      //             });
-      //           });
-      //         });
-      //       });
-      //     });
-      //   });
-      // });
 
       self.getScheduleByWeek({ week : 1 }, function (result) {
         self.renderScheduleByWeek(result, 1);
       });
 
-
     },
 
-    renderScheduleByWeekFilter: function(element, week_count) {
+
+
+    /**
+     * Render Schedule By Week Filter
+     * 
+     * Render the week filter buttons onto the page
+     *
+     * @param [string] (element) the jquery selector where we want to append the filter list
+     * @return [n/a] runs the getScheduleByWeek() function
+     */
+    renderScheduleByWeekFilter: function(element) {
+
       var self = this;
 
-      if ( element === undefined || week_count === undefined ) return;
+      if ( element === undefined ) return;
 
-      for ( var i=1; i<week_count+1; i++) {
+      for ( var i=1; i<App.NFL.config.weeks+1; i++) {
         $(element).append('<a data-week='+i+' type="button" style="margin:0 10px 10px 0;" class="nfl-week-filter btn btn-default btn-lg">'+i+'</a>');
       }
 
@@ -505,6 +518,15 @@
     },
 
 
+
+    /**
+     * Team Logo Image URL
+     * 
+     * Gets a URL of an image of the desired team's logo
+     *
+     * @param  [string] (team_code) The team's abbreviation, ex: SD - San Diego
+     * @return [string] (img_url) The logo URL
+     */
     teamLogoImageURL: function(team_code) {
 
       // var img_url = 'http://upload.wikimedia.org/wikipedia/en/thumb/7/72/'+team_names[team_code]+'_logo.svg/200px-'+team_names[team_code]+'_logo.svg.png';
@@ -515,6 +537,15 @@
     },
 
 
+
+    /**
+     * Team Stadium Image URL
+     * 
+     * Generates URL from curated list of stadium images paired with NFL team codes
+     *
+     * @param  [string] (team_code)     The team's abbreviation, ex: SD - San Diego
+     * @return [string] (team_stadium)  The stadium image URL
+     */
     teamStadiumImageURL: function(team_code) {
 
       var team_stadium = {
@@ -556,10 +587,7 @@
 
     }
 
-
-
-
-  }
+  };
 
 
 
