@@ -16,7 +16,18 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    #header {
+      position:fixed;
+      z-index:1;
+      background-color:rgba(255,255,255, 0.45);
+      height:60px;
+      width:100%;
+      
+    }
+
+
     section { 
+      position:relative;
       height: 100vh; 
       box-sizing: border-box;
       display: flex;
@@ -56,26 +67,34 @@
 </head>
 <body>
 
-<section class="textoverpic">
-  <h1>Fullpage Fixed BG Sections</h1>
-</section>
+<header id="header"></header>
 
-<section>
-  <h1>Compatible with browsers that support flexbox</h1>
-</section>
+<div id="content">
+  
+  <section class="textoverpic">
+    <h1>Fullpage Fixed BG Sections</h1>
+  </section>
+  
 
-<section class="pop">
-  <h1>Only CSS!</h1>
-  <h1>No Javascript!</h1>
-</section>
+  <section>
+    <h1>Compatible with browsers that support flexbox</h1>
+  </section>
 
-<section>
-  <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam minus sint </h1>
-</section>
+  <section class="pop">
+    <h1>Only CSS!</h1>
+    <h1>No Javascript!</h1>
+  </section>
 
-<section>
-  <h1>Lorem ipsum dolor sit amet.</h1>
-</section>
+  <section>
+    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam minus sint </h1>
+  </section>
+
+  <section>
+    <h1>Lorem ipsum dolor sit amet.</h1>
+  </section>
+
+</div>
+
 
 
 

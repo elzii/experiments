@@ -159,3 +159,21 @@ input {
   content: '\f04c';
 }
 
+
+
+
+
+/*
+ * Debug Classes
+ */
+#debug code {
+  color: #fff;
+}
+#debug i {
+  font-weight: bold;
+  font-style: normal;
+}
+.D-g { color: #a6e22e; }
+.D-b { color: #66d9ef; }
+.D-r { color: #F92678; }
+.D-y { color: #e6db74; }

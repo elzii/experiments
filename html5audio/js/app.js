@@ -293,7 +293,7 @@ var App;
         player.removeClass('player-state--pause').addClass('player-state--play')
 
         if ( App.config.debug ) { 
-          this.$el.output.debug.prepend('<br>App.audioPlayer.play()')
+          this.$el.output.debug.prepend('<br><i class="D-g">App.audioPlayer.play()</i>')
         }
       } else {
         // Pause
@@ -301,7 +301,7 @@ var App;
         player.removeClass('player-state--play').addClass('player-state--pause')
 
         if ( App.config.debug ) { 
-          this.$el.output.debug.prepend('<br>App.audioPlayer.play() -- else block')
+          this.$el.output.debug.prepend('<br><i class="D-g">App.audioPlayer.pause()</i>')
         }
       }
 
@@ -337,6 +337,12 @@ var App;
         var _this = App.audioPlayer;
 
         _this.$el.audio[0].currentTime = _this.$el.audio[0].currentTime + increment
+
+        if ( App.config.debug ) { 
+          _this.$el.output.debug.prepend('<br> &nbsp; new_time <i class="D-r">=</i> <i class="D-b">' + (_this.$el.audio[0].currentTime + increment) + '</i>');
+          _this.$el.output.debug.prepend('<br> &nbsp; increment <i class="D-r">=</i> <i class="D-b">' + increment + '</i>');
+          _this.$el.output.debug.prepend('<br><i class="D-g">App.audioPlayer.timeline.changeCurrentTime()</i>');
+        }
       },
 
 
@@ -406,9 +412,9 @@ var App;
         var offset = ( ( event.pageX - _this.$el.timeline[0].offsetLeft ) / _this.$el.timeline.width() ) 
 
         if ( App.config.debug ) { 
-          _this.$el.output.debug.prepend('<br> &nbsp; event.pageX -> ', offset);
-          _this.$el.output.debug.prepend('<br> &nbsp; timeline.width() -> ',  _this.$el.timeline.width());
-          _this.$el.output.debug.prepend('<br>App.audioPlayer.clickEvent()');
+          _this.$el.output.debug.prepend('<br> &nbsp; event.pageX <i class="D-r">=</i> <i class="D-b">' + offset + '</i>');
+          _this.$el.output.debug.prepend('<br> &nbsp; timeline.width() <i class="D-r">=</i> <i class="D-b">' + _this.$el.timeline.width() + '</i>');
+          _this.$el.output.debug.prepend('<br><i class="D-g">App.audioPlayer.clickEvent()</i>');
         }
         return offset;
       }
@@ -441,8 +447,8 @@ var App;
         _this.$el.audio[0].volume = value;
 
         if ( App.config.debug ) { 
-          _this.$el.output.debug.prepend('<br> &nbsp; value -> ', value);
-          _this.$el.output.debug.prepend('<br>App.audioPlayer.volume.setVolume()');
+          _this.$el.output.debug.prepend('<br> &nbsp; value <i class="D-r"><i class="D-r">=</i></i> <i class="D-b">' + value + '</i>');
+          _this.$el.output.debug.prepend('<br><i class="D-g">App.audioPlayer.volume.setVolume()<i>');
         }
       }
 
@@ -522,8 +528,8 @@ var App;
         _this.timeline.movePlayhead(percent * 100);
 
         if ( App.config.debug ) { 
-          _this.$el.output.debug.prepend('<br> &nbsp; percent -> ', percent * 100);
-          _this.$el.output.debug.prepend('<br>App.audioPlayer.movePlayhead()');
+          _this.$el.output.debug.prepend('<br> &nbsp; percent <i class="D-r">=</i> <i class="D-b">' +  (percent * 100) + '</i>' );
+          _this.$el.output.debug.prepend('<br><i class="D-g">App.audioPlayer.movePlayhead()</i>');
         }
 
         audio.currentTime = duration * percent;
