@@ -1,0 +1,329 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CardboardChallenge XML Parser</title>
+
+
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        .btn-file {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+
+        #file--progress {
+            border-radius: 0px;
+        }
+        #file--progress .progress-bar {
+            -webkit-transition: width 500ms;
+            -o-transition: width 500ms;
+            transition: width 500ms;
+            border-radius: 0px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="wrapper" style="padding-top:50px;">
+
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-top:3px;">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">CardboardChallenge XML Parser</a>
+        </div>
+      </div>
+    </div>
+        
+    <div id="file--progress" class="progress" style="margin-bottom:30px;">
+      <div class="progress-bar" role="progressbar" style="width: 0%;"></div>
+    </div>
+
+    <div class="container">
+
+        <div class="row" style="margin-bottom:50px;">
+            <div class="col-lg-12">
+                <h2>Instructions</h2>
+                <p>Use the data export tool from Wordpress (not donately). Upload the file. In instances of form submissions where a user checked <span class="label label-default">newsletter_signup</span> said user's name and email will be collected and output CSV (left) format. </p>
+
+                <p><a href="imagination-foundation-data-old.xml">Download Sample Data</a></p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-6">
+                <h4>File Upload</h4>
+                <hr>
+                <form action="javascript:;">
+                    <div class="form-group">
+                        <h6>Select the <div class="label label-warning">XML</div> file from your computer <span style="color:#b41e29">(larger files may take a minute)</span></h6>
+                    </div>
+                    <div class="form-group">
+                        <span class="btn btn-default btn-file">
+                            Upload XML File <input type="file" id="file">
+                        </span>
+                    </div>
+                </form>
+                
+                
+            </div>
+
+            <div class="col-lg-6">
+                <h4>File Information</h4>
+                <hr>
+                <h5><strong>Name: </strong> <span id="file--name"></span></h5>
+                <h5><strong>Size: </strong> <span id="file--size"></span></h5>
+                <h5><strong>Item Count: </strong> <span id="file--item_count"></span></h5>
+                
+
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:50px;">
+            <div class="col-lg-6">
+
+                <h4>Output CSV</h4>
+                <pre id="file--output__csv"></pre>
+                    
+            </div>
+            <div class="col-lg-6">
+                
+                <h4>Output JSON</h4>
+                <pre id="file--output__json"></pre>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div><!-- #wrapper -->
+
+</body>
+</html>
+
+
+<!-- Javascript -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="unserialize.js"></script>
+<script src="prettyprint.js"></script>
+<script src="https://x2js.googlecode.com/hg/xml2json.js"></script>
+
+
+<script>
+
+    $el = {
+        form : $('#file'),
+        file : {
+            name        : $('#file--name'),
+            size        : $('#file--size'),
+            count       : $('#file--item_count'), 
+            progress    : $('#file--progress .progress-bar')
+        },
+        output : {
+            json : $('#file--output__json'),
+            csv : $('#file--output__csv')
+        }
+    }
+
+
+
+   $el.form.change(function (event) {
+        readFile(this.files[0], function (e) {
+            
+            var result = e.target.result;
+
+            var xmlDoc  = $.parseXML(result),
+                $xml    = $( xmlDoc ),
+                $items  = $xml.find('item');
+
+            var items_count         = $items.length,
+                progress_chunks     = (items_count / 10),
+                progress_increment  = (100 / items_count);
+
+            // display item count
+            $el.file.count.text(items_count);
+
+
+            // convert xml to json
+            var xmlString = xmlToString( xmlDoc );
+            var jsonObj   = xmlStringToJSON( xmlString );
+            var jsonArray = jsonObj.rss.channel.item;
+
+            var resultsArray = [];
+
+            // loop through items
+            var i = 0;
+            
+            (function asyncLoop() {
+                // update progress & do stuff
+                
+                if ( i%progress_chunks >= progress_chunks - 1 ) {
+                    $el.file.progress.width((progress_increment*i)+'%');
+                }
+
+                var title = jsonArray[i].title;
+
+                var meta_key    = jsonArray[i].postmeta[0].meta_key;
+                var meta_value  = jsonArray[i].postmeta[0].meta_value;
+                
+                if ( meta_key['__text'] && meta_key['__text'] == '_dntly_cf_data' ) {
+
+                    if ( meta_value['__cdata'] && (meta_value['__cdata'] != null || meta_value['__cdata'] == "") ) {
+
+                        var data = PHPUnserialize.unserialize(meta_value['__cdata']);
+
+                        if ( data.newsletter_signup && data.newsletter_signup == "true" ) {
+                            resultsArray.push( { name: data.name, email: data.email } );
+
+                        }
+                    }
+                }
+
+
+                i++;
+
+                if (i < items_count) {
+                    setTimeout(asyncLoop, 0);
+                } else {
+                    console.log('loop is done')
+
+                    $el.output.json.html(prettyPrint(resultsArray));
+                    $el.output.csv.html(JSON2CSV(resultsArray));
+                }
+
+            })();
+
+        
+        });
+   })
+
+    function readFile(file, callback){
+        var reader = new FileReader();
+        reader.onload = callback
+        reader.readAsText(file);
+ 
+         // display name
+         $el.file.name.text(file.name);
+         // display size
+        $el.file.size.text(file.size);
+    }
+
+    function xmlToString(xmlData) { 
+
+        var xmlString;
+        // IE
+        if ( window.ActiveXObject ) { 
+            xmlString = xmlData.xml; 
+        }
+        else{
+            xmlString = (new XMLSerializer()).serializeToString(xmlData);
+        }
+        return xmlString;
+    }
+
+    function xmlStringToJSON( xmlString ) {
+
+        var x2js    = new X2JS(),
+            jsonObj = x2js.xml_str2json( xmlString );
+
+        window.xmlFeed = jsonObj;
+
+        return jsonObj;
+    }
+
+    function getObjects(obj, key, val) {
+        var objects = [];
+
+        for ( var i in obj ) {
+            if (!obj.hasOwnProperty(i)) continue;
+            if (typeof obj[i] == 'object') {
+                objects = objects.concat(getObjects(obj[i], key, val));
+            } else if (i == key && obj[key] == val) {
+                objects.push(obj);
+            }
+        }
+        return objects;
+    }
+
+    function searchJSONObjArray(objArray, key, val) {
+        for ( i in objArray ) {
+            var obj = objArray[i]
+
+            if ( obj.hasOwnProperty(key) ) {
+                if ( obj[key]['__text'] == val ) {
+                    return obj[key]['__text'];
+                }
+            }
+        }
+    }
+
+    function JSON2CSV(objArray) {
+        var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+
+        var str = '';
+        var line = '';
+
+        if ($("#labels").is(':checked')) {
+            var head = array[0];
+            if ($("#quote").is(':checked')) {
+                for (var index in array[0]) {
+                    var value = index + "";
+                    line += '"' + value.replace(/"/g, '""') + '",';
+                }
+            } else {
+                for (var index in array[0]) {
+                    line += index + ',';
+                }
+            }
+
+            line = line.slice(0, -1);
+            str += line + '\r\n';
+        }
+
+        for (var i = 0; i < array.length; i++) {
+            var line = '';
+
+            if ($("#quote").is(':checked')) {
+                for (var index in array[i]) {
+                    var value = array[i][index] + "";
+                    line += '"' + value.replace(/"/g, '""') + '",';
+                }
+            } else {
+                for (var index in array[i]) {
+                    line += array[i][index] + ',';
+                }
+            }
+
+            line = line.slice(0, -1);
+            str += line + '\r\n';
+        }
+        return str;
+        
+    }
+
+
+ 
+</script>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Save Blob</title>
+  <link rel="stylesheet" href="">
+
+
+</head>
+<body>
+
+  <canvas id="canvas"></canvas>
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="js/filesaver.js"></script>
+  <script src="js/purl.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    /**
+     * Reference URLs
+     * blob:http%3A//www.apple.com/aa45415d-063a-4fae-b2ad-9cee7764a131
+     * http://stackoverflow.com/questions/16251136/html5-play-video-from-stored-binary-string
+     */
+    
+
+    var c   = document.getElementById('canvas'),
+        ctx = c.getContext('2d');
+
+
+    // $.ajax({
+    //   url: 'blob:http%3A//www.apple.com/aa45415d-063a-4fae-b2ad-9cee7764a131',
+    //   type: 'GET',
+    //   contentType: 'video/mp4',
+    //   beforeSend: function (request) {
+    //     request.setRequestHeader('Accept-Encoding', 'identity;q=1, *;q=0')
+    //     request.setRequestHeader('User-Agent', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.104 Safari/537.36')
+    //   }
+    // })
+    // .done(function (data) {
+    //   console.log("success", data);
+    // })
+    // .fail(function (data) {
+    //   console.log("error", data);
+    // })
+
+
+  
+
+    
+
+    var url = purl('blob:http%3A//www.apple.com/aa45415d-063a-4fae-b2ad-9cee7764a131');
+    console.log(url.data);
+
+  </script>
+
+
+</body>
+</html>

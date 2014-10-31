@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Fixed Fullpage BGs</title>
+  
+
+  <style>
+
+    @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
+
+    body { 
+      margin: 0;
+      font-family: "Open Sans", OpenSans, "Helvetica Neue", Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    section { 
+      height: 100vh; 
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center; 
+      flex-direction: column;
+      padding: 2vw;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-size: 4vw; 
+    }
+    section:first-of-type { 
+      font-size: 5vw;
+    }
+    section:first-of-type, section.pop { 
+      color: #fff;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.15); 
+    }
+    section:nth-of-type(even) { 
+      background: #fff;
+    }
+    section:nth-of-type(1) { 
+      background-image: url(http://i.imgur.com/MHmw7dt.jpg); 
+    }
+    section:nth-of-type(3) { 
+      background-image: url(http://i.imgur.com/zZo3vqt.jpg); 
+    }
+    section:nth-of-type(5) { 
+      background-image: url(http://i.imgur.com/OL99KUh.jpg); 
+    }
+     
+
+  </style>
+
+</head>
+<body>
+
+<section class="textoverpic">
+  <h1>Fullpage Fixed BG Sections</h1>
+</section>
+
+<section>
+  <h1>Compatible with browsers that support flexbox</h1>
+</section>
+
+<section class="pop">
+  <h1>Only CSS!</h1>
+  <h1>No Javascript!</h1>
+</section>
+
+<section>
+  <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam minus sint </h1>
+</section>
+
+<section>
+  <h1>Lorem ipsum dolor sit amet.</h1>
+</section>
+
+
+
+</body>
+</html>

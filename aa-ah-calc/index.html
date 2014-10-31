@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>ArcheAge AH Profit Calc</title>
+
+  <!-- Favicon(s) -->
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="img/favicon.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="img/favicon.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/favicon.png">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+
+  <style>
+  #modifiers {
+    margin-bottom:5px;
+  }
+  #modifiers .modifier {
+    font-size:18px;
+    width:100%;
+    height:40px;
+    line-height:40px;
+    padding:0;
+    display:block;
+    cursor:pointer;
+  }
+  .modifier.label-info { background-color: #999;}
+  .modifier.label-info:hover { background-color: #777;}
+
+  #modifiers input[type="radio"]:checked + label {
+    background-color: #333 !important;
+  }
+  
+  .row-gutter-sm { margin-left:-5px; margin-right: -5px; }
+  .col-gutter-sm { padding-left:5px; padding-right:5px; }
+
+  .list-group-item.dark { background-color: #4E5357; border-color: #46515A; color:white; }
+  .list-group-item.well { border-top-left-radius: 0px; border-top-right-radius: 0px; }
+  .list-group-item.gray { 
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+  }
+  
+  .list-group-item.positive {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+  }
+  .list-group-item.negative {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+  }
+
+
+  /* Collection */
+  #collection {
+
+  }
+  
+  #collection .button-group-full {
+    width:100%;
+    text-align: center;
+  }
+  #collection .btn-nofloat {
+    display:inline-block;
+    float:none !important;
+    width:100%;
+    margin-bottom:10px;
+    border-radius:0;
+  }
+
+  #collection .inline-block {
+    display:inline-block;
+  }
+
+  #collection .btn-half {
+    width:50%;
+    float:left;
+  }
+  #collection .btn-half small {
+    display:inline-block;
+    padding:5px 10px;
+    border-radius: 4px;
+  }
+  #collection .buy { color: #8a6d3b; background-color: #f2dede; border: 1px solid #ebccd1;}
+  #collection .sell { color: #8a6d3b; background-color: #fcf8e3; border: 1px solid #faebcc; }
+
+
+  #alert {
+    visibility: hidden;
+    opacity:0;
+    width:100%;
+
+    -webkit-transition: all 150ms;
+    -o-transition: all 150ms;
+    transition: all 150ms;
+  }
+  #alert.show {
+    visibility: visible;
+    opacity:1;
+  }
+
+  </style>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation" style="">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+          <svg x="0px" y="0px" width="26px" height="26px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" style="float:left;">
+          <g id="Calque_1">
+          </g>
+          <g id="Layer_1">
+            <path d="M57.816,57.973c0-5.662-3.713-13.065-8.251-16.451L17.076,17.288c-4.539-3.385-8.252-1.522-8.252,4.14v36.197   c0,5.662,3.713,13.065,8.252,16.451L49.565,98.31c4.539,3.386,8.251,1.522,8.251-4.14V57.973z"/>
+            <polygon points="26.89,18.187 29.753,20.322 26.89,18.187  "/>
+            <path d="M79.539,15.329H63.606L52.863,0L30.972,15.329h-7.913l7.664,5.716L51.748,6.323l16.324,23.286H42.203l8.474,6.321h20.618   c1.504,0,2.724,1.22,2.724,2.724s-1.22,2.724-2.724,2.724H56.694c3.754,4.689,6.271,11.067,6.271,16.595v17.41h16.574   c2.832,0,5.148-2.316,5.148-5.147V20.476C84.688,17.645,82.371,15.329,79.539,15.329z"/>
+          </g>
+          </svg>
+          <span style="display:block;padding-top:2px;float:left;margin-left:10px;width:200px;">ArcheAge AH Calculator</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div id="wrap" style="padding-top:75px;">
+  <div class="container">
+    
+    <div class="row" style="display:none;">
+      <div class="jumbotron clearfix">
+        <div class="col-lg-3">
+          <img src="img/archeage-logo.png" alt="">
+        </div>
+        <h2>Hello, world!</h2> 
+        <p></p>
+      </div>
+    </div>
+
+
+    <div class="row">
+
+      <div class="col-lg-3 list-group">
+        <div class="list-group-item disabled">Collection</div>
+        
+          <div class="list-group-item">
+
+            <div id="collection" class="btn-group btn-group-full" style="width:100%">
+
+            </div>
+
+          </div>
+
+      </div><!-- col-lg-6.list-group -->
+
+
+      
+      <div class="col-lg-6 list-group">
+        <div class="list-group-item disabled">Calculator</div>
+        
+        
+        <div class="list-group-item">
+          <form action="" id="form" class="">
+            
+            <h5>Unit Prices <small style="color:#D65555"><b>IMPORTANT</b>: Pay attention to unit precision.</small> <small>Ex: 2 silver 3 copper = 0.023</small></h5>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="input-group has-warning">
+                  <span class="input-group-addon">Buy</span>
+                  <input type="number" step="0.001" class="form-control" value="" name="input-buy_ppu" id="input-buy_ppu" placeholder="Price Per Unit">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="input-group">
+                  <span class="input-group-addon">Sell</span>
+                  <input type="number" step="0.001" class="form-control" value="" name="input-sell_ppu" id="input-sell_ppu" placeholder="Price Per Unit">
+                </div>
+              </div>
+
+            </div>
+            
+            <br>
+
+            <h5>Modifier <small>Ex: mushroom is x15, aloe is x47</small></h5>
+            
+            <div id="modifiers" class="row row-gutter-sm">
+              <div class="col-md-2 col-gutter-sm">
+                <input type="radio" name="input-modifier" checked="true" style="display:none;" id="modifier-11" value="1.1"/>
+                <label for="modifier-11" class="label label-info modifier">x11</label>
+              </div>
+              <div class="col-md-2 col-gutter-sm">
+                <input type="radio" name="input-modifier" style="display:none;" id="modifier-15" value="1.5"/>
+                <label for="modifier-15" class="label label-info modifier">x15</label>
+              </div>
+              <div class="col-md-2 col-gutter-sm">
+                <input type="radio" name="input-modifier" style="display:none;" id="modifier-23" value="2.3"/>
+                <label for="modifier-23" class="label label-info modifier">x23</label>
+              </div>
+              <div class="col-md-2 col-gutter-sm">
+                <input type="radio" name="input-modifier" style="display:none;" id="modifier-47" value="4.7"/>
+                <label for="modifier-47" class="label label-info modifier">x47</label>
+              </div>
+              <div class="col-md-2 col-gutter-sm">
+                <input type="radio" name="input-modifier" style="display:none;" id="modifier-77" value="7.7"/>
+                <label for="modifier-77" class="label label-info modifier">x77</label>
+              </div>
+            </div>
+            
+            <hr>
+            <h6>Save this calculation to reference later or clear your collection</h6>
+            <button id="submit--save_to_collection" class="btn btn-primary">Save to Collection</button>
+            <button id="submit--clear_collection" class="btn btn-danger">Clear Collection</button>
+          </form>
+
+        
+        </div>
+
+        <div id="alert" class="alert alert-danger" style="margin-top:20px;" role="alert"></div>
+
+
+      </div><!-- col-lg-6.list-group -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="col-lg-3 list-group" style="padding-right:0;">
+        <div class="list-group-item dark">Output</div>
+        
+
+        <div id="output-net_ppu" class="list-group-item gray">
+          <strong>Net per unit</strong> 
+          <h2>₲ <span id="output-net_ppu_val"></span></h2>
+        </div>
+        <div id="output-net_percentage" class="list-group-item gray">
+          <strong>Net percentage</strong>
+          <h2><span id="output-net_percentage_val"></span>%</h2>
+        </div>
+          
+
+      </div><!-- col-lg-6.list-group -->
+
+    </div>
+
+
+
+
+    <div id="charts" class="row">
+      
+      <div class="col-lg-6 list-group">
+        
+        <div class="list-group-item disabled">Fixed Sell PPU Projection</div>
+        
+        <div class="list-group-item">
+          <canvas id="canvas--sell_ppu" width="500" height="320" style="display:block;margin:0 auto;"></canvas>
+        </div>
+        
+      </div>
+
+      <div class="col-lg-6 list-group">
+        
+        <div class="list-group-item disabled">Fixed Buy PPU Projection</div>
+        
+        <div class="list-group-item">
+          <canvas id="canvas--buy_ppu" width="500" height="320" style="display:block;margin:0 auto;"></canvas>
+        </div>
+        
+      </div>
+
+    </div>
+
+
+    <br><br><br>
+
+    <div class="row">
+      
+      <div id="debug" class="col-lg-12 list-group" style="display:none;">
+        
+        <div class="list-group-item disabled">Debugging</div>
+        
+        <pre id="output-debug" class="list-group-item well">
+          
+        </pre>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+  
+
+<!-- Javascript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="js/chart.min.js"></script>
+<script src="js/app.js"></script>
+
+<script>
+  
+  
+</script>
+
+</body>
+</html>

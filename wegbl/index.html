@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  
+
+<script>
+  
+var vs = document.getElementById('vs').textContent;
+var fs = document.getElementById('fs').textContent;
+var canvas = document.querySelector('canvas');
+var ctx = canvas.getContext('experimental-webgl', {
+   alpha: false,
+   antialias: true,
+   premultipliedAlpha: false,
+   stencil: true
+});
+ 
+ctx.disable(ctx.DEPTH_TEST);
+ctx.disable(ctx.CULL_FACE);
+ctx.viewport(0, 0, canvas.width, canvas.height);
+ctx.bindFramebuffer(ctx.FRAMEBUFFER, null);
+ctx.clearColor(1, 1, 1, 1);
+ctx.clear(ctx.COLOR_BUFFER_BIT);
+ctx.activeTexture(ctx.TEXTURE0);
+ 
+var program = ctx.createProgram();
+var vertexShader = ctx.createShader(ctx.VERTEX_SHADER);
+var fragmentShader = ctx.createShader(ctx.FRAGMENT_SHADER);
+ctx.shaderSource(vertexShader, vs);
+ctx.compileShader(vertexShader);
+ctx.shaderSource(fragmentShader, fs);
+ctx.compileShader(fragmentShader);
+ctx.attachShader(program, vertexShader);
+ctx.attachShader(program, fragmentShader);
+ctx.linkProgram(program);
+ctx.useProgram(program);
+ 
+var vertices = [
+  -0.5, -0.5,
+  0.5, -0.5, 
+  0, 0.5
+];
+ 
+var indices = [
+  0, 1, 2
+];
+ 
+var vertexBuffer = ctx.createBuffer();
+ctx.bindBuffer(ctx.ARRAY_BUFFER, vertexBuffer);
+ctx.bufferData(ctx.ARRAY_BUFFER, new Float32Array(vertices), ctx.STATIC_DRAW);
+ 
+var indexBuffer = ctx.createBuffer();
+ctx.bindBuffer(ctx.ELEMENT_ARRAY_BUFFER, indexBuffer);
+ctx.bufferData(ctx.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), ctx.STATIC_DRAW);
+ 
+var aVertexPosition = ctx.getAttribLocation(program, 'aVertexPosition');
+ctx.enableVertexAttribArray(aVertexPosition);
+ctx.vertexAttribPointer(aVertexPosition, 2, ctx.FLOAT, false, 0, 0);
+ 
+var aColor = ctx.getAttribLocation(program, 'aColor');
+ctx.enableVertexAttribArray(aVertexPosition);
+ctx.vertexAttribPointer(aVertexPosition, 2, ctx.FLOAT, false, 0, 0);
+ 
+ctx.bindBuffer(ctx.ARRAY_BUFFER, vertexBuffer);
+ctx.drawArrays(ctx.TRIANGLES, 0, 3);
+  
+</script>
+
+
+
+</body>
+</html>

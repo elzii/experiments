@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Get Avatar</title>
+
+
+</head>
+
+<body>
+
+
+
+  <!-- Begin page content -->
+  <div class="container">
+  
+      <button class="btn" onclick="get_avatar_from_service('ljzmcm@gmail.com', 'google');">Google Plus</button>
+      
+  </div>
+  
+
+
+
+<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+
+
+<script>
+
+  var API_KEYS = {
+    google : {
+      key             : 'AIzaSyDDLaUui2j9ktbvnMNWU6gIh9PnnFQrczc',
+      email           : '1059027857433-c0dalmtgqtc40enoa10b3oo1206cm52s@developer.gserviceaccount.com',
+      client_id       : '1059027857433-c0dalmtgqtc40enoa10b3oo1206cm52s.apps.googleusercontent.com',
+      client_secret   : 'tZvOPhROaGa8Hreww_0cPuZR',
+      redirect_url    : 'https://localhost/oauth2callback' 
+    }
+  }
+
+  function get_avatar_from_service(email, service, size) {
+
+    console.log('running')
+
+    var url = '';
+
+    switch (service) {
+
+    case "google":
+      
+      gapi.client.setApiKey(API_KEYS.google.key);
+
+      gapi.client.load('plus', 'v1', function() {
+        var request = gapi.client.plus.people.get({
+          'userId': 'me'
+        });
+
+        request.execute(function(resp) {
+
+          var heading = document.createElement('h4');
+          var image = document.createElement('img');
+
+          image.src = resp.image.url;
+
+          heading.appendChild(image);
+          heading.appendChild(document.createTextNode(resp.displayName));
+
+          document.getElementById('content').appendChild(heading);
+        });
+      });
+      
+      break;
+
+    case "facebook":
+        
+      break;
+
+    case "gravatar":
+        
+      break;
+
+
+    default:
+        url = "http://i.imgur.com/RLiDK.png"; // 48x48
+    }
+
+    return url;
+  }
+
+
+  function isNumber(n) {
+      return !isNaN(parseFloat(n)) && isFinite(n);
+  }
+
+</script>
+
+
+
+
+
+</body>
+</html>

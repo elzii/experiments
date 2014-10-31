@@ -24,7 +24,7 @@
             <!-- <div class="stage">
                <div id="peach" name="peach" class="peach char"></div>
             </div> -->
-            <div class="stage">
+            <!-- <div class="stage">
                <div id="zitz" name="zitz" class="zitz char"></div>
             </div>
             <div class="stage">
@@ -47,6 +47,10 @@
             </div>
             <div class="stage">
                <div name="megaman" class="megaman char"></div>
+            </div> -->
+
+            <div class="stage">
+               <div name="test" class="test char"></div>
             </div>
 
         </div>
