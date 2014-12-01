@@ -88,7 +88,6 @@ var App;
       // Debug
       console.log('selection', selection)
       console.log('text', text)
-      console.log('text', event.target.offsetParent.id)
 
       // Remove any existing tweet dialog 
       if ( event.target.id !== 'highlight-tweet' && event.target.offsetParent.id !== 'highlight-tweet' ) {
