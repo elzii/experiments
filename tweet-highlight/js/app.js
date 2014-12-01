@@ -89,8 +89,15 @@ var App;
       console.log('selection', selection)
       console.log('text', text)
 
+      if ( event.target.offsetParent !== null && event.target.offsetParent.id == 'highlight-tweet' ) {
+        var buttonClick = true;
+      }
+      if ( event.target.offsetParent == null ) {
+        var buttonClick = false;
+      }
+
       // Remove any existing tweet dialog 
-      if ( event.target.id !== 'highlight-tweet' && event.target.offsetParent.id !== 'highlight-tweet' ) {
+      if ( event.target.id !== 'highlight-tweet' && !buttonClick ) {
         if ( document.querySelectorAll('#highlight-tweet').length > 0 ) {
 
           console.log('tweetDialog already on the page, removing')
@@ -101,7 +108,7 @@ var App;
         }
       }
 
-      if ( event.target.offsetParent.id !== 'highlight-tweet' ) {
+      if ( event.target.offsetParent !== null && event.target.offsetParent.id !== 'highlight-tweet' ) {
 
         // Make sure we have something selected
         if ( selection.type == 'Range' && text.length > 0 ) {
