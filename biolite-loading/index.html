@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Walkway.js Example</title>
+    <script src="https://cdn.rawgit.com/ConnorAtherton/walkway/master/src/walkway.js"></script>
+    <style>
+
+      body, html {
+        body: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        overflow-x:hidden;
+      }
+      svg {
+        position:absolute;
+        top:0;left:0;
+        width:100%;
+        height:100%;
+      }
+
+
+      #loading {
+        position:relative;
+        margin:0 auto;
+        top:50%;
+        margin-top:-93px;
+        width:150px;
+        height:186px;
+      }
+
+      #svg-biolite--complete {
+        -webkit-transition: all 1s linear;
+        -o-transition: all 1s linear;
+        transition: all 1s linear;
+        opacity:0;
+      }
+
+        #svg-biolite--complete .st0 { fill:#FDB913; }
+        #svg-biolite--complete .st1 { fill:#00B2B0; }
+
+        #svg-biolite--complete.show { opacity:1; }
+
+      #svg-biolite {
+      }
+
+        #svg-biolite path {
+          fill: transparent;
+          stroke-width: 1px;
+        }
+
+        #svg-biolite .st0 {
+          path:#FDB913;
+          stroke:#FDB913;
+          line:#FDB913;
+        }
+        #svg-biolite .st1 {
+          path: #00B2B0;
+          stroke: #00B2B0;
+          line: #00B2B0;
+        }
+
+      
+    </style>
+  </head>
+  <body>
+
+    <div id="loading">
+      
+      <svg version="1.1" id="svg-biolite" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         width="141.4px" height="177.4px" viewBox="0 0 141.4 177.4" style="enable-background:new 0 0 141.4 177.4;" xml:space="preserve"
+        >
+      <g>
+        <path class="st1" d="M2,105.8C2,90,7.4,75.4,16.4,63.8c2.9-3.8,8.3-4.5,12.1-1.5c3.8,2.9,4.5,8.3,1.5,12.1
+          c-6.8,8.8-10.8,19.6-10.8,31.5c0.1,28.5,23.1,51.5,51.6,51.6c28.5-0.1,51.5-23.1,51.6-51.6c0-11.9-4-22.7-10.8-31.5
+          c-2.9-3.8-2.2-9.2,1.5-12.1c3.8-2.9,9.2-2.2,12.1,1.5c9,11.6,14.4,26.2,14.4,42.1c0,38-30.8,68.8-68.8,68.8
+          C32.8,174.7,2,143.9,2,105.8"/>
+        <path class="st0" d="M68.7,5.2c28.9,37.5,43.8,74.7,20,115.8c-3.2,5.5-10.4,1.6-8.2-3.9c1.1-2.7,9.1-19.8,0.1-47.5
+          c-3.3-10-6.7-9.6-11.8-2.9c-4.2,6.7-25.8,34.2-1.7,69c3.6,6.1-3.6,10.5-8.3,6.4C21,115.2,42.7,72.8,51.6,48
+          c8.3-23,7.3-31.3,7.8-39.9C59.7,2.5,64.4-0.8,68.7,5.2"/>
+      </g>
+      </svg>
+
+
+
+      <svg version="1.1" id="svg-biolite--complete" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         width="141.4px" height="177.4px" viewBox="0 0 141.4 177.4" style="enable-background:new 0 0 141.4 177.4;" xml:space="preserve"
+        >
+      <g>
+        <path class="st1" d="M2,105.8C2,90,7.4,75.4,16.4,63.8c2.9-3.8,8.3-4.5,12.1-1.5c3.8,2.9,4.5,8.3,1.5,12.1
+          c-6.8,8.8-10.8,19.6-10.8,31.5c0.1,28.5,23.1,51.5,51.6,51.6c28.5-0.1,51.5-23.1,51.6-51.6c0-11.9-4-22.7-10.8-31.5
+          c-2.9-3.8-2.2-9.2,1.5-12.1c3.8-2.9,9.2-2.2,12.1,1.5c9,11.6,14.4,26.2,14.4,42.1c0,38-30.8,68.8-68.8,68.8
+          C32.8,174.7,2,143.9,2,105.8"/>
+        <path class="st0" d="M68.7,5.2c28.9,37.5,43.8,74.7,20,115.8c-3.2,5.5-10.4,1.6-8.2-3.9c1.1-2.7,9.1-19.8,0.1-47.5
+          c-3.3-10-6.7-9.6-11.8-2.9c-4.2,6.7-25.8,34.2-1.7,69c3.6,6.1-3.6,10.5-8.3,6.4C21,115.2,42.7,72.8,51.6,48
+          c8.3-23,7.3-31.3,7.8-39.9C59.7,2.5,64.4-0.8,68.7,5.2"/>
+      </g>
+      </svg>
+
+
+    </div>
+
+    <script>
+
+      /*
+       * Easing Functions - inspired from http://gizma.com/easing/
+       * only considering the t value for the range [0, 1] => [0, 1]
+       */
+      var EasingFunctions = {
+        // no easing, no acceleration
+        linear: function (t) { return t },
+        // accelerating from zero velocity
+        easeInQuad: function (t) { return t*t },
+        // decelerating to zero velocity
+        easeOutQuad: function (t) { return t*(2-t) },
+        // acceleration until halfway, then deceleration
+        easeInOutQuad: function (t) { return t<.5 ? 2*t*t : -1+(4-2*t)*t },
+        // accelerating from zero velocity 
+        easeInCubic: function (t) { return t*t*t },
+        // decelerating to zero velocity 
+        easeOutCubic: function (t) { return (--t)*t*t+1 },
+        // acceleration until halfway, then deceleration 
+        easeInOutCubic: function (t) { return t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 },
+        // accelerating from zero velocity 
+        easeInQuart: function (t) { return t*t*t*t },
+        // decelerating to zero velocity 
+        easeOutQuart: function (t) { return 1-(--t)*t*t*t },
+        // acceleration until halfway, then deceleration
+        easeInOutQuart: function (t) { return t<.5 ? 8*t*t*t*t : 1-8*(--t)*t*t*t },
+        // accelerating from zero velocity
+        easeInQuint: function (t) { return t*t*t*t*t },
+        // decelerating to zero velocity
+        easeOutQuint: function (t) { return 1+(--t)*t*t*t*t },
+        // acceleration until halfway, then deceleration 
+        easeInOutQuint: function (t) { return t<.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t }
+      }
+
+
+      document.addEventListener('DOMContentLoaded', function() {
+
+        // var svg = new Walkway('#triangle');
+        // svg.draw(function() {
+        //   console.dir('Finished triangle!');
+        // });
+
+
+        var svg = new Walkway({
+          selector: '#svg-biolite',
+          duration: 750,
+          easing: 'linear'
+        }).draw(function () {
+          
+          // var el = document.getElementById('svg-biolite--complete')
+          //     el.classList.add('show')
+          
+          console.log('Animation complete')
+
+        });
+
+        setTimeout(function() {
+
+          var el = document.getElementById('svg-biolite--complete')
+              el.classList.add('show')
+
+        }, 650)
+
+      });
+    </script>
+  </body>
+</html>
