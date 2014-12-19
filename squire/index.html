@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Squire WYSIWYG</title>
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/squire-ui.css">
+    
+  <style>
+
+    body, html {
+      padding: 0;
+      margin: 0;
+    }
+    
+  </style>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/squire.js"></script>
+  <script src="js/squire-ui.js"></script>
+
+</head>
+<body>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-centered">
+      <textarea id="editor"></textarea>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+
+   
+    UI = new SquireUI({replace: 'textarea#editor', height: 300});
+
+
+  });
+</script>
+
+
+
+</body>
+</html>
