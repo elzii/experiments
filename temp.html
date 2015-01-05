@@ -22,16 +22,81 @@
 <body>
 
 
-<script src="https://www.dntly.com/assets/js/v1/form.js" data-donately-id="2600" data-donately-campaign-id="1712"></script>
-
-
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
 
-   
+  var dntly = {
+    endpoint : 'public/campaigns/',
+    campaign_id : '8'
+  }
+
+  var data = {};
+
+  sendRequest('http://www.dntly.com/api/v1/'+dntly.endpoint+dntly.campaign_id+'.json', function (data) {
+
+    var json = data.response;
+        json = JSON.parse(json);
+        json = json.campaign;
+
+    console.log(json)
     
+  })
+   
+});
 
-  });
+
+
+  /**
+   * Send Request
+   * @param  {String}   url
+   * @param  {Function} callback
+   * @param  {Object}   postData
+   * @return {Object}
+   */
+  function sendRequest(url, callback, postData) {
+    var req = createXMLHTTPObject();
+    if (!req) return;
+    var method = (postData) ? "POST" : "GET";
+    req.open(method, url, true);
+    // req.setRequestHeader('User-Agent','XMLHTTP/1.0');
+    if (postData)
+      req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    req.onreadystatechange = function() {
+      if (req.readyState != 4) return;
+      if (req.status != 200 && req.status != 304) {
+        console.log('HTTP error ' + req.status);
+        return;
+      }
+      callback(req);
+    }
+    if (req.readyState == 4) return;
+    req.send(postData);
+  }
+
+  var XMLHttpFactories = [
+    function() { return new XMLHttpRequest() },
+    function() { return new ActiveXObject("Msxml2.XMLHTTP") },
+    function() { return new ActiveXObject("Msxml3.XMLHTTP") },
+    function() { return new ActiveXObject("Microsoft.XMLHTTP") }
+  ];
+
+  /**
+   * Create XML HTTP Object
+   * @return {Object}
+   */
+  function createXMLHTTPObject() {
+    var xmlhttp = false;
+
+    for (var i = 0; i < XMLHttpFactories.length; i++) {
+      try {
+        xmlhttp = XMLHttpFactories[i]();
+      } catch (e) {
+        continue;
+      }
+      break;
+    }
+    return xmlhttp;
+  }
 </script>
 
 

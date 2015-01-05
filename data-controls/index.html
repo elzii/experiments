@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Data Controls</title>
+
+  <!-- Favicon(s) -->
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="img/favicon.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="img/favicon.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/favicon.png">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css">
+  
+  <link rel="stylesheet" href="css/hljs-monokai.css">
+
+
+  <style>
+
+  </style>
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation" style="">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <span>Data Controls</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="margin-top: 50px;">
+
+<h3>app.js</h3>
+<pre><code class="hljs javascript">
+var APP = (function () {
+
+  var app = {}
+
+
+  /**
+   * App Properties
+   * 
+   */
+  app = {
+
+    // Config
+    config : {
+      environment : window.location.href.match(/(localhost)/g) ? 'development' : 'production',
+      debug : window.location.href.match(/(localhost)/g) ? true : false
+    },
+
+    // Data
+    data : {
+      temp : null,
+      binds : {}
+    },
+
+
+    // Supports
+    supports : {
+
+    },
+
+
+    // Elements
+    $el : {
+
+      controls : {
+        nav : $('*[data-control-nav]'),
+        animation : $('*[data-control-animation]'),
+        stage_height : $('*[data-control-stage-height]'),
+        toggle_icon : $('*[data-control-toggle-icons]'),
+        curtain : $('*[data-control-curtain]'),
+        expander : $('*[data-control-expander]'),
+        display : $('*[data-control-display]'),
+        text : $('*[data-control-text]'),
+        sibling : $('*[data-control-sibling]'),
+        scrollto : $('*[data-control-scrollto]'),
+        active_items : $('*[data-control-activeitems]').find('li'),
+        modal : $('*[data-control-modal]')
+      },
+
+      modals : {
+        modal : $('.modal'),
+        bay : $('#modals'),
+        close : $('.modal--close')
+      },
+
+   
+    }
+
+  };
+
+
+
+  /**
+   * Init
+   */
+  app.init = function () {
+    
+    this.dataControls.init()
+
+  }
+
+
+
+
+  /**
+   * Data Controls
+   */
+  app.dataControls = {
+
+    init : function() {
+
+      this.stageHeight()
+      this.controlNavs()
+      this.controlAnimation()
+      this.toggleIcon()
+      this.controlCurtain()
+      this.controlExpander()
+      this.controlDisplay()
+      this.controlText()
+      this.controlSibling()
+      this.controlScrollTo()
+      this.controlActiveItems()
+
+    },
+
+    /**
+     * Control Navs
+     * data-control-nav
+     * data-control-targets
+     */
+    controlNavs: function() {
+
+      // set up event bindings
+      app.$el.controls.nav.each(function (i, el) {
+        
+        var $this           = $(this),
+            navItems        = $this.find('li'),
+            controlTargets  = $this.data('control-targets')
+            index           = 0,
+            transitionSpeed = 100;
+
+        // set active class on first nav item
+        navItems.first().addClass('active')
+
+        // show first item
+        // $(controlTargets).find('li:first-child').fadeIn(transitionSpeed)
+        $(controlTargets).find('li:first-child').show()
+        
+
+        // set up click event
+        navItems.on('click', function (event) {
+
+          var $self = $(this);
+          
+          // set scoped index based on clicked index        
+          index = $self.index()
+
+          // set active classes on nav
+          $self.siblings().removeClass('active')
+          $self.addClass('active')
+
+          // split them from comma separator
+          if ( controlTargets.indexOf(',') ) {
+            
+            var target = controlTargets.split(',')
+            
+            target.forEach(function (selector, x) {
+                  
+                var $targetItem = $(selector).find('li').eq(index)
+
+                $targetItem.siblings().stop().hide()
+                $targetItem.stop().show()
+
+            })
+
+          } else {
+            
+            var $targetItem = $(controlTargets).find('li').eq(index)
+
+            $targetItem.siblings().stop().fadeOut(transitionSpeed)
+            $targetItem.stop().delay(transitionSpeed+5).fadeIn(transitionSpeed)
+
+          }
+
+        })
+
+      })
+
+    },
+
+
+
+
+    /**
+     * Control Animation
+     * data-control-animation
+     */
+    controlAnimation: function() {
+
+      // set up event bindings
+      $(document).delegate(app.$el.controls.animation.selector, 'click', function (event) {
+
+        var $this = $(this),
+            controlTarget = $this.data('control-animation-target'),
+            animationClass = $this.data('control-animation-class')
+
+        $(controlTarget)
+          .stop()
+          .removeClass('animated')
+          .removeClass(animationClass)
+          .addClass('animated '+animationClass)
+
+        if ( app.config.debug ) console.log('%cDATA-CONTROL', 'color:#d2a946', '- added class "'+animationClass+'" on "'+controlTarget+'"')
+
+      })
+
+    },
+
+
+
+    /**
+     * Stage Height
+     * data-control-stage-height
+     */
+    stageHeight: function() {
+
+      $(document).delegate(app.$el.controls.stage_height.selector, 'click', function (event) {
+
+        var $this = $(this),
+            ww    = $(window).width(),
+            wh    = $(window).height()
+
+        $this.width(ww).height(wh)
+
+      })
+
+    },
+
+
+    /**
+     * Icon Toggle
+     */
+    toggleIcon: function() {
+
+      $(document).delegate(app.$el.controls.toggle_icon.selector, 'click', function (event) {
+
+        var $this       = $(this),
+            $icon       = $this.find('.fa'),
+            iconClasses = $this.data('control-toggle-icons')
+
+        var icons = iconClasses.split(',')
+
+        $icon
+          .toggleClass(icons[0])
+          .toggleClass(icons[1])
+
+      })
+
+    },
+
+    /**
+     * Control Curtain
+     */
+    controlCurtain: function() {
+
+      $(document).delegate(app.$el.controls.curtain.selector, 'click', function (event) {
+
+        var $this            = $(this),
+            targetCurtainId = $this.data('control-curtain'),
+            $targetCurtain  = $(targetCurtainId)
+
+        $targetCurtain.toggleClass('show')
+
+        if ( app.config.debug ) console.log('%cDATA-CONTROL', 'color:#d2a946', '- curtains on '+targetCurtainId)
+
+      })
+
+    },
+
+
+    /**
+     * Control Display
+     */
+    controlDisplay: function() {
+
+      $(document).delegate(app.$el.controls.display.selector, 'click', function (event) {
+
+        var $this            = $(this),
+            targetDisplayId = $this.data('control-display'),
+            $targetDisplay  = $(targetDisplayId)
+
+        $targetDisplay.toggle()
+
+        if ( app.config.debug ) console.log('%cDATA-CONTROL', 'color:#d2a946', '- display toggle on '+targetDisplayId)
+
+      })
+
+    },
+
+
+
+    /**
+     * Control Text
+     */
+    controlText: function() {
+
+      $(document).delegate(app.$el.controls.text.selector, 'click', function (event) {
+
+        var $this        = $(this),
+            text         = $this.data('control-text').split(','),
+            $targetText  = $this.find('*[data-control-text-target]'),
+            currentText  = $targetText.text()
+
+          if ( currentText == text[0] ) {
+            $targetText.text(text[1])
+          } else {
+            $targetText.text(text[0])
+          }
+
+      })
+
+    }, 
+
+
+
+    /**
+     * Control Sibling
+     */
+    controlSibling: function() {
+
+      $(document).delegate(app.$el.controls.sibling.selector, 'click', function (event) {
+
+        var $this            = $(this),
+            $targetSibling   = $this.siblings(0);
+
+        $targetSibling.toggle()
+
+      })
+
+    },
+
+
+    /**
+     * Control Expander
+     */
+    controlExpander: function() {
+
+      $(document).delegate(app.$el.controls.expander.selector, 'click', function (event) {
+
+
+        var $this            = $(this),
+            targetExpanderId = $this.data('control-expander'),
+            $targetExpander  = $(targetExpanderId)
+
+        $targetExpander.toggleClass('show')
+
+        if ( app.config.debug ) console.log('%cDATA-CONTROL', 'color:#d2a946', '- expander on '+targetExpanderId)
+
+      })
+
+    },
+
+
+    
+
+    /**
+     * Control ScrollTo
+     */
+    controlScrollTo: function() {
+
+      $(document).delegate(app.$el.controls.scrollto.selector, 'click', function (event) {
+
+        event.preventDefault()
+
+        var $this            = $(this),
+            targetElementId  = $this.data('control-scrollto'),
+            $targetElement   = $(targetElementId)
+
+        var options = {
+          offset : $this.data('control-scrollto-offset') || 0,
+          duration : Math.floor( Math.abs($(window).scrollTop() - $targetElement.offset().top) / 2.75 ),
+          // easing : $.easing ? 'easeInOutExpo' : 'swing'
+          easing : 'swing'
+        }
+
+        if ( $targetElement.length > 0 ) {
+          
+          scrollToElement({
+            target : targetElementId,
+            offset : options.offset,
+            easing : options.easing,
+            duration : options.duration
+          })
+
+          if ( app.config.debug ) console.log('%cDATA-CONTROL', 'color:#d2a946', '- scrollto element '+targetElementId, options.offset, (options.duration / 1000)+'s', options.easing)
+          
+        } else {
+          if ( app.config.debug ) console.log('%cERROR : DATA-CONTROL', 'color:#eb1817', '- scrollto element '+targetElementId+' does not exist' + options.offset)
+        }
+
+      })
+
+    },
+
+
+    /**
+     * Control Active Items
+     */
+    controlActiveItems: function() {
+
+      $(document).delegate(app.$el.controls.active_items.selector, 'click', function (event) {
+
+        var $this = $(this)
+
+        $this.siblings().removeClass('active')
+        $this.addClass('active')
+
+      })
+
+    },
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+
+  /**
+   * DOCUMENT READY
+   * -------------------------------------------------------------------
+   *
+   */
+  $(document).ready(function(){
+      
+    app.init();
+
+  });
+
+ 
+
+
+  /**
+   * WINDOW LOAD
+   * -------------------------------------------------------------------
+   *
+   */
+  $(window).load(function(){
+
+
+  });
+
+  /**
+   * WINDOW SCROLL
+   * -------------------------------------------------------------------
+   *
+   */
+  $(window).on('scroll', function(){
+
+      
+  });
+
+
+  /**
+   * WINDOW RESIZE
+   * -------------------------------------------------------------------
+   *
+   */
+  $(window).resize(function(){   
+      
+
+
+  }).trigger('resize');
+
+
+
+
+  /**
+   * ORIENTATION CHANGE (requires jQuery mobile)
+   * -------------------------------------------------------------------
+   *
+   */
+  window.addEventListener("orientationchange", function() {
+      
+      
+
+  }, false);
+
+
+
+
+  /**
+   * SELF INVOKING ANONYMOUS FUNCTION
+   * -------------------------------------------------------------------
+   * 
+   */
+  (function(){ 
+
+        
+
+  })(); 
+
+
+
+
+
+  /**
+   * scrollToElement
+   */
+  function scrollToElement(options){
+
+      var duration  = options.duration || 250,
+          easing    = options.easing || 'swing',
+          offset    = options.offset || 0;
+
+      var target    = options.target || false;
+
+      if(target){
+          if(/(iPhone|iPod)\sOS\s6/.test(navigator.userAgent)){
+              $('html, body').animate({
+                  scrollTop: $(target).offset().top
+              }, duration, easing);
+          } else {
+              $('html, body').animate({
+                  scrollTop: $(target).offset().top - (offset)
+              }, duration, easing);
+          }
+      }
+  }
+  
+
+
+
+  return app;
+}());
+</code></pre>
+
+</div>
+
+<!-- Javascript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script src="js/hljs.js"></script>
+<script>
+  hljs.initHighlighting();
+  // hljs.initHighlightingOnLoad();
+</script>
+
+<script src="js/app.js"></script>
+
+
+</body>
+</html>
