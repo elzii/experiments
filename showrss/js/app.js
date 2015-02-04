@@ -63,20 +63,12 @@ var APP = (function () {
    */
   app.showFeed = {
 
-    container : $('#shows'),
-
-    template : $('#show_template').html(),
-    
-      
-    /**
-     * Initialize
-     */
+        
     init: function() {
 
-      this.buildShowList( app.feeds.showrss_all )
+      this.renderShowFeed( app.feeds.showrss_all )
 
     },
-
 
     /**
      * getShowFeed
@@ -116,17 +108,13 @@ var APP = (function () {
     },
 
     /**
-     * buildShowList
+     * renderShowFeed
      *
      * Read the object containing the show list returning from getShowFeed
      * 
      * @param  {String} url
      */
-    buildShowList: function(url) {
-
-      var self = this;
-
-      var obj = { 'shows' : [] };
+    renderShowFeed: function(url) {
 
       // Get the feed
       this.getShowFeed( url, function (items) {
@@ -147,42 +135,21 @@ var APP = (function () {
           console.log('Show Torrent Info: ', show_info)
           
 
-          // app.$el.shows.append('\
-          //   <div class="show col-md-3"> \
-          //     <div class="show__inner"> \
-          //       <div class="show__info"> \
-          //         <h4 class="show-title">' + show_info.title + '</h4> \
-          //       </div> \
-          //     </div> \
-          //   </div> \
-          // ')
+          app.$el.shows.append('\
+            <div class="show col-md-3"> \
+              <div class="show__inner"> \
+                <div class="show__info"> \
+                  <h4 class="show-title">' + show_info.title + '</h4> \
+                </div> \
+              </div> \
+            </div> \
+          ')
 
-          obj.shows.push({
-            name : show_info.title,
-            season : show_info.season,
-            episode : show_info.episode,
-            episode_title : show_info.episode_name,
-            release_date : release_date,
-            magnet_uri : magnet_uri
-          })
+          
 
         })
-        
-        var html = Mustache.to_html( self.template, obj )
-
-        self.container.html(html)
-
-        // return shows;
 
       })
-
-    },
-
-
-    /**
-     * Render Show List
-     */
-    render: function() {
 
     },
 
