@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>ShowRSS</title>
+
+  <!-- Favicon(s) -->
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="img/favicon.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="img/favicon.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/favicon.png">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+
+  <style>
+    
+
+    /**
+     * Show
+     */
+    .show {
+      display:table;
+      padding:0;
+      height: 240px;
+      border-right:1px solid #eee;
+      border-bottom:1px solid #eee;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+    .show:nth-child(4n), 
+    .show:last-child { 
+      border-right: none; 
+    }
+    .show:hover .show__inner {
+      /* transition */
+      visibility: visible;
+      opacity:1;
+    }
+
+      .show__inner {
+        display:table;
+        margin:0 auto;
+        height:100%;
+        width:100%;
+        vertical-align: middle;
+        text-align: center;
+        background-color: rgba(0,0,0, 0.25);
+
+        /* transition */
+        transition: all 150ms ease-in-out;
+        opacity:0;
+        visibility: hidden;
+      }
+        .show__info {
+          display:table-cell;
+          vertical-align: middle;
+        }
+
+      .show__overlay {
+
+      }
+      .show__cover-photo {
+        
+      }
+
+    /**
+     * Bootstrap Overrides
+     */
+    .navbar {
+      margin:0;
+    }
+  </style>
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default" role="navigation" style="">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <span>ShowRSS</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div id="shows" class="row">
+    
+    <script id="show_template" type="text/template">
+      {{#shows}}
+        <div class="show col-md-3">
+          <div class="show__inner">
+            <div class="show__info">  
+              <ul>
+                <li>Name: {{name}}</li>
+                <li>Season: {{{season}}}</li>
+                <li>Episode: {{episode}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      {{/shows}}
+    </script>
+
+  </div>
+</div>
+
+
+  
+
+<!-- Javascript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+<script src="js/app.js"></script>
+
+<script>
+  
+  
+</script>
+
+</body>
+</html>

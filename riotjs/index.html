@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>riotjs</title>
+
+  <!-- Favicon(s) -->
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="img/favicon.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="img/favicon.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/favicon.png">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+
+  <style>
+
+  </style>
+  
+  <script src="js/riot.min.js"></script>
+
+</head>
+<body>
+
+<div class="navbar navbar-default" role="navigation" style="">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <span>riotjs</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div id="wrap">
+  <div class="container">
+
+    <todo></todo>
+    
+    <script>
+      riot.tag('todo', '\
+        <h3>{ opts.title }</h3> \
+        <ul> \
+          <li each="{ items }"> \
+            <label class="{ completed: done }"> \
+              <input type="checkbox" __checked="{ done }" onclick="{ parent.toggle }"> \
+              { title } \
+            </label> \
+          </li> \
+        </ul> \
+        <form onsubmit="{ add }"> \
+          <input name="input" onkeyup="{ edit }"> \
+          <button __disabled="{ !text }">Add #{ items.length + 1 }</button> \
+        </form>', 
+        function (opts) {
+
+          this.disabled = true
+
+          this.items = opts.items
+
+          /**
+           * Edit
+           */
+          this.edit = function(e) {
+            this.text = e.target.value
+          }.bind(this)
+
+          /**
+           * Add
+           */
+          this.add = function(e) {
+            if (this.text) {
+              this.items.push({ title: this.text })
+              this.text = this.input.value = ''
+            }
+          }.bind(this)
+
+          /**
+           * Toggle
+           */
+          this.toggle = function(e) {
+            var item = e.item
+            item.done = !item.done
+            return true
+          }.bind(this)
+
+      })
+    </script>
+
+    <script>
+    riot.mount('todo', {
+      title: 'I want to behave!',
+      items: [
+        { title: 'Avoid excessive coffeine', done: true },
+        { title: 'Be less provocative' },
+        { title: 'Be nice to people' }
+      ]
+    })
+    </script>
+
+
+  </div>
+</div>
+  
+
+<!-- Javascript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script src="js/app.js"></script>
+
+<script>
+  
+  
+</script>
+
+</body>
+</html>
