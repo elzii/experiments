@@ -1,0 +1,14 @@
+{
+  "name": "seinfeld-crawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexander Zizzo <alex@anagramgroup.com> (http://github.com/elzii)",
+  "license": "ISC",
+  "dependencies": {
+    "osmosis": "0.0.6"
+  }
+}

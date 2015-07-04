@@ -7,10 +7,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Playground</title>
+    <title>Reddit Live Stream</title>
 
     <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- Favicon(s) -->
     <link rel="shortcut icon" href="../favicon.png" type="image/x-icon" />
@@ -42,8 +44,7 @@
         <li class="character-nav dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="/characters.php" data-pjax>Data Export</a></li>
-            <li><a href="/characters.json" data-pjax>Charts &amp; Graphs</a></li>
+            <li><a href="charts.html">Charts</a></li>
           </ul>
         </li>
       </ul>
@@ -58,27 +59,55 @@
 <!-- Begin page content -->
 <div class="container">
 
-  <div class="page-header clearfix" style="margin-top:0px;">
-    <div class="pull-left" style="padding-top:10px;">
-      <h3 style="margin-top:0px;">
-        <span id="reddit-post-count" class="orangered">0</span> posts 
-        <small>from</small> 
-        <span id="reddit-domain-count" class="orangered">0</span> domains
-        <small>with</small>
-        <span id="reddit-repost-count" class="orangered">0</span> reposts
-      </h3>
+  <div class="col-sm-8">
+    <div class="page-header clearfix mt0">
+      <div class="pull-left pt10">
+        <h3 class="mt0">
+          <span id="reddit-post-count" class="orangered">0</span> posts 
+          <small>from</small> 
+          <span id="reddit-domain-count" class="orangered">0</span> domains
+          <small>with</small>
+          <span id="reddit-repost-count" class="orangered">0</span> reposts
+        </h3>
+      </div>
+      <div class="pull-right">
+        
+        <!-- <button id="reddit-start-stream" type="button" class="btn btn-primary btn-lg btn-medium">
+          <span class="glyphicon glyphicon-play"></span> Start
+        </button> -->
+
+        <img src="../assets/images/ajax-loader.gif" alt="" id="reddit-loading">
+        <button id="reddit-stop-stream" type="button" class="btn btn-danger btn-lg btn-medium">
+          <span class="glyphicon glyphicon-stop"></span> Stop
+        </button>
+      </div>
     </div>
-    <div class="pull-right">
-      <img src="../assets/images/ajax-loader.gif" alt="" id="reddit-loading">
-      <button id="reddit-stop-stream" type="button" class="btn btn-default btn-lg">
-        <span class="glyphicon glyphicon-stop"></span> Stop
-      </button>
-    </div>
+
+    <!-- <div id="loading" class="loading"><i></i><i></i><i></i></div> -->
+
+    <div id="reddit-posts"></div>
   </div>
 
-  <!-- <div id="loading" class="loading"><i></i><i></i><i></i></div> -->
+  <div class="col-sm-4">
+    <div class="page-header clearfix mt0">
+      <div class="pull-left pt10">
+        <h3 class="mt0">Data Visualization</h3>
+      </div>
+    </div>
 
-  <div id="reddit-posts"></div>
+    <div id="charts">
+
+      <div class="chart-box">
+        <div class="chart-box__inner">
+          <canvas id="chart--domain" class="chart" width="300" height="300"></canvas>
+        </div>
+        <footer class="chart-box__footer">
+          <span>Domains</span>
+        </footer>
+      </div>
+
+    </div>
+  </div>
 
 </div>
 
@@ -89,11 +118,13 @@
 
 <!-- JavaScript -->
 <script src="../assets/js/jquery-1.11.1.min.js"></script>
-<!-- <script src="../assets/js/underscore.min.js"></script> -->
 <script src="../assets/js/bootstrap.js"></script>
-<script src="../assets/js/angular.min.js"></script>
+<!-- <script src="../assets/js/angular.min.js"></script> -->
 <script src="../assets/js/jquery.cookie.js"></script>
-<script src="app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+
+<script src="js/charts.js"></script>
+<script src="js/app.js"></script>
 
 
 
