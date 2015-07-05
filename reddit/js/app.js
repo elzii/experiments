@@ -15,7 +15,7 @@ var APP = (function () {
     // Config
     config : {
       environment : window.location.href.match(/(localhost)/g) ? 'development' : 'production',
-      debug : window.location.href.match(/(localhost)/g) ? true : false,
+      debug : window.location.href.match(/(localhost|dev)/g) ? true : false,
       debug_plugins : window.location.href.match(/(localhost)/g) ? true : false,
       debug_console: false
     },
@@ -36,6 +36,8 @@ var APP = (function () {
       json            : {},
       posts           : [],
       domains         : [],
+      subreddits      : [],
+      subreddits_unique : [],
       domains_unique  : [],
       links           : [],
       links_unique    : [],
@@ -52,6 +54,9 @@ var APP = (function () {
     },
     curl     : {
       temp : null
+    },
+    temp : {
+      posts : []
     },
     supports : {}
   };
@@ -108,6 +113,7 @@ var APP = (function () {
 
     streaming : true,
     interval  : 10000,
+    limit     : 25,
     count     : 25,
 
     urls      : {
@@ -119,6 +125,7 @@ var APP = (function () {
       progress        : $('#reddit-update-interval'),
       post_count      : $('#reddit-post-count'),
       domain_count    : $('#reddit-domain-count'),
+      subreddit_count : $('#reddit-subreddit-count'),
       loading         : $('#reddit-loading'),
       repost_count    : $('#reddit-repost-count'),
       stop            : $('#reddit-stop-stream')
@@ -143,6 +150,7 @@ var APP = (function () {
       // Get first list of posts
       this.getJSON( _this.urls.all_new, { 
         sort  : 'new',
+        limit : _this.limit,
         count : _this.count
       }, function() {
 
@@ -234,6 +242,10 @@ var APP = (function () {
         // Count unique domains
         log.domains_unique = _this.countDomainUniques()
 
+        // Count subreddits
+        log.subreddits = _this.countSubredditUniques()
+        
+
         // Count duplicate links (reposts)
         log.reposts = _this.countDuplicateLinks()
 
@@ -262,14 +274,14 @@ var APP = (function () {
      */
     setDataLocally : function(json_data) {
 
-      // app.data.reddit.posts = []
+      // app.data.temp.posts = []
 
       json_data.data.children.map(function (obj, index) {
-        app.data.reddit.posts[index] = obj.data
+        app.data.temp.posts[index] = obj.data
       })
 
       // Render the posts
-      this.render(app.data.reddit.posts)
+      this.render(app.data.temp.posts)
 
     },
 
@@ -293,12 +305,15 @@ var APP = (function () {
       if ( options.separator ) {
         $container.find('.media:first-child').before('<hr>');
       }
-      
-      // console.log('-----------------------------------------------------------');
-      // console.log('Rendering new posts...');
-      // console.log('-----------------------------------------------------------');
+
+      var last_ids = [];
 
       $.each(data, function (index, item) {
+
+        if ( $container.find('.reddit-post[data-post-id="'+item.name+'"]').length > 0 ) {
+          console.log('Duplicate post ID '+item.name+', skip rendering.')
+          return true;
+        }
 
         // Handle irregular thumbnail values
         if ( item.thumbnail === "self" || item.thumbnail === "default" || item.thumbnail === "nsfw" || item.thumbnail == null || !item.thumbnail ) {
@@ -367,6 +382,7 @@ var APP = (function () {
         _this.getJSON( app.reddit.urls.all_new, { 
           sort   : 'new', 
           before : app.data.reddit.ending_post,
+          limit  : _this.limit,
           count  : _this.count
         }, function() {
           _this.updateCharts()
@@ -464,7 +480,7 @@ var APP = (function () {
           domains_unique  = app.data.reddit.domains_unique;
 
       // Push to data object
-      app.data.reddit.posts.map(function (obj, index) {
+      app.data.temp.posts.map(function (obj, index) {
         domains.push(obj.domain);
       })
 
@@ -480,6 +496,31 @@ var APP = (function () {
       // if ( app.config.debug ) console.log( 'Unique domains: ', domains_unique.length )
       
       return domains_unique.length;
+
+    },
+
+
+    countSubredditUniques: function() {
+
+      var _this              = app.reddit,
+          subreddits         = app.data.reddit.subreddits,
+          subreddits_unique  = app.data.reddit.subreddits_unique;
+
+      // Push to data object
+      app.data.temp.posts.map(function (obj, index) {
+        subreddits.push(obj.subreddit);
+      })
+
+      // Loop subreddits and find uniques
+      $.each(subreddits, function (i, el) {
+        if ($.inArray(el, subreddits_unique) === -1) {
+          subreddits_unique.push(el);
+        }
+      })
+
+      _this.$el.subreddit_count.text( subreddits_unique.length )
+
+      return subreddits_unique.length;
 
     },
 
@@ -500,7 +541,7 @@ var APP = (function () {
           links_unique = app.data.reddit.links_unique;
 
       // Add to data obj
-      app.data.reddit.posts.map(function (obj, index) {
+      app.data.temp.posts.map(function (obj, index) {
         links.push(obj.url)
       })
 
@@ -549,10 +590,21 @@ var APP = (function () {
 
     updateCharts : function() {
 
+      // If any previous data (use domain as ref, destroy )
       if ( app.data.reddit.charts.domain ) {
         Charts.destroy( app.data.reddit.charts.domain )
+        Charts.destroy( app.data.reddit.charts.subreddits )
       }
+
+      // Domains Chart
       app.data.reddit.charts.domain = Charts.domains( app.data.reddit.domains, {
+        segmentShowStroke: false,
+        animationSteps: 50,
+        animationEasing: 'easeInOutQuart'
+      } )
+
+      // Subreddits Chart
+      app.data.reddit.charts.subreddits = Charts.subreddits( app.data.reddit.subreddits, {
         segmentShowStroke: false,
         animationSteps: 50,
         animationEasing: 'easeInOutQuart'

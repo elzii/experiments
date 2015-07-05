@@ -20,6 +20,10 @@ body {
   height: 100%;
 }
 
+.page-header {
+  height: 50px;
+}
+
 #sidbar-nav {
   position: relative;
 }
@@ -421,6 +425,7 @@ body {
  * Charts
  */
 .chart-box {
+  margin-bottom: 25px;
   width: 100%;
   text-align:center;
   background-color: #f1f1f1;

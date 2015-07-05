@@ -48,7 +48,8 @@ var CHARTS = (function () {
     $el: {
       container : $('#charts'),
       canvas : {
-        domains : $('#chart--domain'),
+        domains : $('#chart--domains'),
+        subreddits : $('#chart--subreddits'),
       }
     }
   }
@@ -100,6 +101,7 @@ var CHARTS = (function () {
         element = ctx.chart.canvas;
 
     $(element).fadeOut( delay )
+
     setTimeout(function() {
       ctx.destroy()
     }, delay)
@@ -135,7 +137,7 @@ var CHARTS = (function () {
 
       // Set data object in array
       data[i] = {
-       color     : random_color,
+       color     : colorLuminance(random_color, -0.25),
        highlight : colorLuminance( random_color, -0.15 ),
        label     : domain,
        value     : domains_counts[i] 
@@ -145,6 +147,47 @@ var CHARTS = (function () {
 
     // Render chart
     return new Chart(ctx).Pie(data, options)
+  }
+
+
+  /**
+   * Domains
+   */
+  charts.subreddits = function(subreddits_arr, options) {
+
+    if ( !subreddits_arr ) {
+      console.log('No array of subreddits provided');
+      return false;
+    }
+
+    var options = options || {}
+
+    // Prep canvas
+    var ctx = this.$el.canvas.subreddits.get(0).getContext('2d');
+
+    // Format some data
+    var data_formatted    = countInstancesOfStringInArray(subreddits_arr),
+        subreddits_unique = data_formatted[0],
+        subreddits_count  = data_formatted[1],
+        data              = [];
+
+    $.each( subreddits_unique, function (i, subreddit) {
+
+      // Generate a random color
+      var random_color = randomHexColor()
+
+      // Set data object in array
+      data[i] = {
+       color     : colorLuminance(random_color, -0.25),
+       highlight : colorLuminance( random_color, -0.15 ),
+       label     : subreddit,
+       value     : subreddits_count[i] 
+      }
+
+    })
+
+    // Render chart
+    return new Chart(ctx).Doughnut(data, options)
   }
 
 
