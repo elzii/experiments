@@ -1,0 +1,505 @@
+{
+  "timeline" : {
+    "5000 BC - 1 BC" : {
+      "start" : "5000 BC",
+      "end" : "1 BC",
+      "events" : [
+        {
+          "date": "4500 BC",
+          "title": "Ocean Diving Begins",
+          "description": "Around this time, coastal cultures like those in Greece and China begin diving into the sea to gather food and engage in commerce. Diving is possibly even used in warfare."
+        },
+        {
+          "date": "4000 BC",
+          "title": "First Sailing Vessels",
+          "description": "The ancient Egyptians develop the first sailing vessels. These vessels are probably only used for sailing in the eastern Mediterranean and near the mouth of the Nile river."
+        },
+        {
+          "date": "1000 BC",
+          "title": "Deep Diving Begins",
+          "description": "The Greek poet Homer mentions sponge fishermen who dive as deep as 100 feet (30 meters) by holding on to a heavy rock. To compensate for the increasing pressure on their ears, they pour oil into their ear canals and take a mouthful of oil before diving. Once on the bottom, they spit out the oil, cut as many sponges free from the bottom as their breath will allow, and are pulled back to the surface by a tether."
+        },
+        {
+          "date": "600 BC",
+          "title": "First Sea Routes",
+          "description": "In search of tin and other resources, the ancient Phoenicians develop sea routes around the Mediterranean and into the Red Sea and Indian Ocean. They make it as far as Africa by 590 B.C. They also reach England by sailing along the western European coast."
+        },
+        {
+          "date": "500 BC",
+          "title": "Treasure Diving Begins",
+          "description": "King Xerxes of Persia commissions a diver named Scyllias and his daughter Cyana to dive for treasure during one of the many wars between the Persians and the Greeks."
+        },
+        {
+          "date": "414 BC",
+          "title": "Diving Used in Warfare",
+          "description": "The Greek historian Thucydides writes about diving used in warfare in his narration of the siege of Syracuse. His writings tell of Greek divers who submerge to remove underwater obstacles from the harbor in order to ensure the safety of their ships."
+        },
+        {
+          "date": "360 BC",
+          "title": "First Crude Diving Bell Design",
+          "description": "The Greek philosopher Aristotle mentions the use of a sort of crude, air-supply diving bell. Aristotle wrote that \"one can allow divers to breathe by lowering a bronze tank into the water. Naturally the container is not filled with water but air, which constantly assists the submerged man\"."
+        },
+        {
+          "date": "325 BC",
+          "title": "First Use of a Diving Bell",
+          "description": "Alexander the Great made use of a crude diving bell to employ combat divers during the siege of Tyre. The diving bell contained colored glass so that the divers could see through it. The divers used the bell to clear debris from the harbor. Alexander himself made several dives with the device to check on the progress of the work."
+        },
+        {
+          "date": "325 BC",
+          "title": "Voyage of Pytheas",
+          "description": "The Greek astronomer and geographer Pytheas sails north from the Mediterranean and reaches the coast of England. He is the first person on record to describe the midnight sun north of the Arctic Circle. He also developed methods for using the Sun and the North Star to determine latitude."
+        },
+        {
+          "date": "200 BC",
+          "title": "Circumference of the Earth Discovered",
+          "description": "The Greek astronomer Eratosthenes becomes the first person to determine the circumference of the Earth. He uses the angles of shadows and the distance between Alexandria and Syene to arrive at a value of 40,000 km. The actual circumference of the Earth is 40,032 km. "
+        },
+        {
+          "date": "150 BC.",
+          "title": "Ptolemy's Map",
+          "description": "The Greek astronomer and geographer Ptolemy produces a map of the ancient world that includes the continents of Europe, Asia, and Africa as well as the surrounding oceans. This early map is one of the first known to include lines of latitude and longitude. Unfortunately this map would be lost to history but would be rediscovered in the years to come."
+        },
+        {
+          "date": "100 BC",
+          "title": "Salvage Diving Flourishes",
+          "description": "Salvage diving operations around the major shipping ports of the eastern Mediterranean are so well organized that a payment scale is established by law for salvage work. This pay scale acknowledges the fact that effort and risk increase with the depth of the dive."
+        }
+      ]
+    },
+    "1 AD - 1600" : {
+      "start" : "1 AD",
+      "end": "1600",
+      "events" : [
+        {
+          "date": "200 AD",
+          "title": "First Indicated Use of Goggles",
+          "description": "Artwork on Peruvian pottery shows divers wearing goggles and holding fish."
+        },
+        {
+          "date": "900",
+          "title": "Viking Expeditions Begin",
+          "description": "The Vikings begin to explore and colonize Iceland, Greenland, and Newfoundland. They are among the first to use the North Star to determine their latitude."
+        },
+        {
+          "date": "1002",
+          "title": "Voyage of Leif Erikson",
+          "description": "Norse explorer Leif Erikson becomes the first European to land in North America. His voyage takes place nearly 500 years before that of Christopher Columbus.  He calls the new land Vinland and establishes a Norse settlement in what is now the northern tip of Newfoundland in Canada."
+        },
+        {
+          "date": "1405",
+          "title": "Chinese Exploration ",
+          "description": "The Chinese send out seven voyages consisting of over 300 ships and a combined crew of nearly 37,000. These voyages are designed to extend Chinese influence and impress their neighboring states. Economic pressures back home put an end to these expensive voyages after only a short time."
+        },
+        {
+          "date": "1410",
+          "title": "Ptolemy's Map Rediscovered",
+          "description": "Ptolemy's famous map of the world is rediscovered and published once again after the European crusades capture ancient Roman libraries from the Arab peoples."
+        },
+        {
+          "date": "1492",
+          "title": "Voyage of Christopher Columbus",
+          "description": "The Spanish explorer Christopher Columbus sets out on his historic voyage across the Atlantic Ocean in search of a passage to China and India. Instead, he discovers North and South America, which eventually leads to European colonization of these newly discovered continents."
+        },
+        {
+          "date": "1498",
+          "title": "Voyage of Vasco da Gama",
+          "description": "The Portuguese explorer Vasco da Gama sails his ships around the Cape of Good Hope on the southern tip of Africa and becomes the first European to reach India by boat. The expedition later returns to Portugal with a valuable cargo of rare spices."
+        },
+        {
+          "date": "September 20, 1519",
+          "title": "First Circumnavigation of the World",
+          "description": "Ferdinand Magellan and his fleet depart Portugal to begin a daring voyage of discovery. The fleet would become the first sail around the world. Magellan does not live to see their accomplishment. He dies on the Island of Mactan in the Philippines in 1521 from the poison arrows of the local natives."
+        },
+        {
+          "date": "1535",
+          "title": "First True Diving Bell",
+          "description": "Guglielmo de Lorena invents the first true diving bell. The apparatus rests on diver’s shoulders and has much of its weight supported by slings. The bell provides enough air for the diver to breathe for about a one-hour dive."
+        },
+        {
+          "date": "1578",
+          "title": "First Plans for a Submarine",
+          "description": "An English mathematician named William Bourne draws up the first known plans for an underwater boat. These plans call for a leather-covered wooden frame craft that would be rowed from the inside. There is no evidence to suggest that this craft was ever built."
+        }
+      ]
+    },
+    "1601 - 1800" : {
+      "start": "1601",
+      "end": "1800",
+      "events": [
+        {
+          "date": "1620",
+          "title": "First Submarine",
+          "description": "Dutch physician Cornelis Drebbel builds the world's first submarine. The boat is made of wood reinforced with iron and covered with leather. Inside, 12 oarsmen are seated six on each side. They row with oars that stick out the sides through tight fitting leather sleeves to keep the water out. Drebbel makes several trips in his submarine in the Thames River near London at a depth of about 12 to 15 feet."
+        },
+        {
+          "date": "1690",
+          "title": "First Air-replenished Diving Bell",
+          "description": "The English astronomer Edmund Halley develops a diving bell in which the atmosphere in the bell can be replenished by sending weighted barrels of air down from the surface."
+        },
+        {
+          "date": "1698",
+          "title": "Voyage of Edmund Halley",
+          "description": "English astronomer Edmund Halley makes what may be the first scientific voyage to study the variation of the magnetic compass. During his voyages, he also makes important contributions to the understanding of the trade winds."
+        },
+        {
+          "date": "1715",
+          "title": "First Waterproof Suit",
+          "description": "Chevalier de Beauve, a guard in the French Navy, develops a waterproof suit with lead shoes. Air is supplied from the surface by two leather tubes fastened to the helmet."
+        },
+        {
+          "date": "1715",
+          "title": "First Enclosed Diving Device",
+          "description": "Englishman John Lethbridge develops a completely enclosed, one-man diving dress. The device is made from a reinforced, leather-covered barrel of air, equipped with a glass porthole for viewing, and two arm holes with watertight sleeves."
+        },
+        {
+          "date": "August 26, 1768",
+          "title": "First Voyage of Endeavour",
+          "description": "Lieutenant James Cook leaves the port of Plymouth, England on a voyage to observe a transit of the planet of Venus across the Sun. During this and two voyages to follow, Cook would explore and map the Pacific Ocean. He is the first person to use a chronometer to accurately determine his longitude at sea."
+        },
+        {
+          "date": "1772",
+          "title": "First Practical Diving Helmet",
+          "description": "The French scientist Sieur Freminet invents a helmet-hose diving apparatus, in which air is pumped from the surface with an egg-shaped reservoir. The air reaches the diver through a hose attached to the helmet. This system provides a constant supply of air to the diver. With this device, Freminet is able to stay submerged at a depth of 16 meters for up to 1 hour."
+        },
+        {
+          "date": "1785",
+          "title": "Franklin's Sundry Maritime Observations",
+          "description": "American patriot and inventor Benjamin Franklin writes a lengthy letter to a scientific colleague in France. Known as his Sundry Maritime Observations, the letter announces the discovery of the Gulf Stream and touches on a wide range of maritime subjects such as ship propulsion methods, hull design, and causes of disasters at sea."
+        },
+        {
+          "date": "1788",
+          "title": "Improved Diving Bell",
+          "description": "American John Smeaton incorporates several improvements to the diving bell. He builds the bell made from cast iron and is the first to use an efficient hand-operated pump to sustain the air supply via a hose. An air reservoir system and nonreturn valves to keep air from being sucked back up the hoses when the pump stops."
+        },
+        {
+          "date": "1797",
+          "title": "First Diving Suit",
+          "description": "German mechanic Karl Heinrich Klingert creates a device that is the first to be called a \"diving suit”. It consists of a jacket and trousers made of waterproof leather, a helmet with a porthole, and a metal front. It is linked to a turret with an air reservoir. The reservoir cannot replenish itself, so the suit has a limited dive time duration."
+        },
+        {
+          "date": "1800",
+          "title": "The Nautilus",
+          "description": "Robert Fulton, inventor of the steamboat, builds an early submarine called The Nautilus. This cigar-shaped craft is made of wood over iron plates, and uses a horizontal rudder to control the up-and-down movement of the submarine. This rudder system is still in use today."
+        }
+      ]
+    },
+    "1801 - 1900" : {
+      "start" : "1801",
+      "end": "1900",
+      "events" : [
+        {
+          "date": "1807",
+          "title": "U.S. Coast Survey Established",
+          "description": "President Thomas Jefferson signs a law establishing the United States Coast Survey. The organization studies the eastern coast of the United States and returns data about a wide range of maritime subjects including tides and tidal currents, sea floor characteristics, and the depth and physical features of near-shore waters."
+        },
+        {
+          "date": "1825",
+          "title": "First use of Scuba",
+          "description": "Englishman William H. James designs a self-contained underwater breathing apparatus, or scuba. In James' design, the diver wears a helmet and carries a supply of compressed air in a cast-iron belt fastened around the waist. This device allows the diver to remain underwater for up to an hour."
+        },
+        {
+          "date": "December 27, 1831",
+          "title": "Voyage of the H.M.S. Beagle",
+          "description": "English naturalist Charles Darwin departs England aboard the H.M.S. Beagle. The goal of the expedition is to perform a survey of Patagonia and Tierra del Fuego. Darwin studies the plants and animals at each new stop. He discovers many unique species on the Galapagos Islands off the coast of Peru in South America. These discoveries lead to his groundbreaking theory of evolution. In his book, The Origin of Species, Darwin suggests that the deep ocean may be a sanctuary for living fossils."
+        },
+        {
+          "date": "1837",
+          "title": "First Practical Diving Suit",
+          "description": "Augustus Siebe, a German instrument maker, refines and improves previous diving suit designs and introduces the \"Siebe Improved Diving Dress\". This diving suit is the true predecessor to the famous deep-sea diving suit familiar to everybody today. The improved design allowed a greater freedom of movement for the diver and would be used for over a century."
+        },
+        {
+          "date": "January 3, 1840",
+          "title": "First Modern Sounding",
+          "description": "Sir James Clark Ross conducts the first open ocean deep-water sounding in 2425 fathoms (14,450 feet) in the south Atlantic ocean at at Latitude 27 S Longitude 17 W. The sounding is taken using the traditional method of lowering a hemp rope over the side of the ship."
+        },
+        {
+          "date": "1842",
+          "title": "Darwin on Coral Reef Atolls",
+          "description": "Charles Darwin publishes The Structure and Distribution of Coral Reefs. In this work he discusses how coral atolls are formed from the subsidence and erosion of volcanic islands."
+        },
+        {
+          "date": "1843",
+          "title": "Speculation on Deep Sea Life",
+          "description": "British naturalist Edward Forbes states his belief that life cannot exist below 300 fathoms (1800 feet) in the deep sea. This declaration begins a 20-year debate about the possible existence of a lifeless zone in the ocean known as an azoic zone."
+        },
+        {
+          "date": "1849",
+          "title": "Continental Shelf",
+          "description": "Coast Survey soundings in support of Gulf Stream investigations result in the discovery of the continental shelf break and the continental slope."
+        },
+        {
+          "date": "1853",
+          "title": "Discovery of Deep Sea Life",
+          "description": "Edward Forbes' theory of on deep sea life is called into question when Louis F. de Pourtales of the U.S. Coast Survey examines Coast Survey sounding operations that find indications of life in depths over 1000 fathoms (6000 feet)."
+        },
+        {
+          "date": "1857",
+          "title": "First Deep Sea Canyon Discovered",
+          "description": "James Alden, commanding officer of the Coast Survey Steamer Active, discovers a deep submarine valley, or \"gulch,\" in the center of Monterey Bay off the coast of California. Alden had discovered the first known deep sea canyon, now known as Monterey Canyon. This canyon extends 95 miles into the Pacific Ocean and reaches a depth of 11,800 feet."
+        },
+        {
+          "date": "1860",
+          "title": "First Chart of the Gulf Stream",
+          "description": "The first chart of the Gulf Stream is published by the U.S. Coast Survey. The Gulf Stream is a warm ocean current that originates in the Gulf of Mexico and travels up the eastern coast of the North America, where it brings warmer climate to the northern regions of the Atlantic Ocean. The current can have a significant impact on ships traveling in the area."
+        },
+        {
+          "date": "1861",
+          "title": "First U.S. Navy Submarine",
+          "description": "The United States Navy contracts French emigrant Brutus de Villeroi to design a submarine. The vessel is built by the firm of Neafie &amp; Levy and is made of iron with small circular plates of glass on top for light. Known as the Alligator, the sub is powered by sixteen hand-powered paddles protruding from the sides. It was built for use in the Civil War, but was never used in battle."
+        },
+        {
+          "date": "1867",
+          "title": "Proof of Deep Sea Life",
+          "description": "American naturalist Louis F. de Pourtales conducts dredging operations from the Coast Survey Steamers Corwin and Bibb off the southern coast of Florida. During the operation, he finds prolific life extending below 300 fathoms (1800 feet)."
+        },
+        {
+          "date": "1868",
+          "title": "Deep Sea Life in Abundance",
+          "description": "Scottish naturalist Charles Wyville Thomson dredges the ocean floor from the HMS Lightning and Porcupine and discovers life as deep as 2,400 fathoms (14,400 feet, 4,389 meters). This evidence finally disproves Edward Forbes' theory of a lifeless (azoic) zone below 300 fathoms (1,800 feet, 548 meters)."
+        },
+        {
+          "date": "1872",
+          "title": "Early Marine Survey of the Americas",
+          "description": "Swiss naturalist Louis Agassiz takes the steamship Hassler on a biological survey of the Americas. The expedition begins on the East Coast of the United States and continues south through the Straits of Megellan and on to San Francisco. The ship is outfitted for deep ocean sounding and dredging. More than 30,000 specimens of marine life are collected and cataloged."
+        },
+        {
+          "date": "1872",
+          "title": "First Wireline Sounding",
+          "description": "Irish physicist and engineer Sir William Thomson invents an operational wireline sounding machine. Modifications of this machine ultimately replace the traditional hemp-rope sounding methods. The new wireline machines are faster and more accurate, making it much easier for researchers to survey the ocean depths."
+        },
+        {
+          "date": "December 21, 1872",
+          "title": "Voyage of the H.M.S. Challenger",
+          "description": "Intrigued by the earlier work by Charles Darwin aboard the Beagle, the H.M.S. Challenger sails from Portsmouth, England and begins a four-year around the world. During the voyage, scientists test the salinity, temperature and density of the seawater. Information is also collected about ocean currents, sediment, and meteorology. The crew discovers underwater mountain chains and hundreds of species previously unknown. This research is eventually consolidated into a fifty-volume research report known as The Challenger Report. This research forms the basis of modern oceanography."
+        },
+        {
+          "date": "1874",
+          "title": "Sigsbee Sounding Machine",
+          "description": "Commander Charles D. Sigsbee commands the Coast Survey Steamer Blake, where he modifies the Thomson Sounding Machine. His improved instrument is termed the Sigsbee Sounding Machine. This new machine becomes the basic model for wireline sounding in the deep sea for the next 50 years."
+        },
+        {
+          "date": "1882",
+          "title": "First Oceanographic Research Vessel",
+          "description": "The U.S. Fisheries Commission Steamer Albatross begins operations. The Albatross is the first vessel built by any government for the sole purpose of oceanographic research. This iron-hulled, twin-screw steamer would conduct serious marine research for nearly 40 years until it is finally decommissioned in 1921."
+        },
+        {
+          "date": "1888",
+          "title": "First Modern Electric Submarine",
+          "description": "The French Navy launches the Gymnote. It is the first electrically powered and fully functional military submarine. The steel-hulled craft is powered by a 204-cell battery. It completes over 2,000 successful dives before being scrapped for its limited range."
+        },
+        {
+          "date": "1899",
+          "title": "Marine Survey of the Pacific",
+          "description": "Swiss Zoologist Alexander Agassiz makes several expeditions on the steamship Albatross to study coral reefs in the Pacific Ocean. The ship's crew makes soundings and collects specimens from islands and atolls in the South Pacific. Over the next six years, the expeditions discover an abundant range of marine life from previously unexplored remote regions."
+        }
+      ]
+    },
+    "1901 - 1970" : {
+      "start": "1901",
+      "end": "1970",
+      "events": [
+        {
+          "date": "1912",
+          "title": "Scripps Institute",
+          "description": "Scripps Institution of Oceanography becomes affiliated with the University of California. Scripps is one of the world's leading marine research centers and is located in La Jolla, California, just north of San Diego."
+        },
+        {
+          "date": "April 27, 1914",
+          "title": "First Acoustic Exploration of the Sea Floor",
+          "description": "Canadian inventor Reginald Fessenden uses an oscillator to bounce sound waves between an iceberg and the sea floor. This test marks the beginning of acoustic exploration of the sea. The technology will eventually lead to the development of sonar, allowing submarines to signal each other and allowing ships to detect icebergs."
+        },
+        {
+          "date": "April 15, 1912",
+          "title": "Titanic Sinks",
+          "description": "The White Star Liner Titanic sinks after striking an iceberg in the North Atlantic Ocean. Over 1500 passengers lose their lives during one of the worst peacetime maritime disasters in history. This tragedy leads to a concerted effort to devise an acoustic means of discovering objects in the water ahead of a moving vessel."
+        },
+        {
+          "date": "1925",
+          "title": "Mapping the Ocean Floor",
+          "description": "The German vessel Meteor sails around the Atlantic Ocean taking detailed measurements of the ocean floor using echosounding equipment. These voyages reveal new information about the shape and structure of the ocean floor."
+        },
+        {
+          "date": "1930",
+          "title": "Woods Hole Oceanographic Institution",
+          "description": "In Cape Cod, Massachusetts, the Woods Hole Oceanographic Institution is founded. Woods Hole would become one of the world's leading oceanographic research institutions."
+        },
+        {
+          "date": "1934",
+          "title": "First Deep Ocean Dive",
+          "description": "William Beebe and Otis Barton embark on a deep sea expedition in a tethered sphere known as a bathysphere. They reach a depth of a 3,000 feet (914 meters) off the coast of Bermuda and discover a previously unseen world of bizarre, luminescent creatures."
+        },
+        {
+          "date": "1935",
+          "title": "Sonobuoy Developed",
+          "description": "Researchers at the Coast and Geodetic Survey invent an automatic telemetering radio sonobuoy. This instrument eliminates the need for manned station ships during Radio Acoustic Ranging (RAR) navigation operations. This instrument is considered to be the first offshore moored telemetering instrument."
+        },
+        {
+          "date": "1937",
+          "title": "Bathythermograph Invented",
+          "description": "Geophysicist and oceanographer Athelstan Spilhaus invents the bathythermograph, a measuring device that continuously records temperatures. The invention's name stands the test of time, and is still in use today."
+        },
+        {
+          "date": "1938",
+          "title": "Live Coelacanth Discovered",
+          "description": "Fishermen off the coast of South Africa pull up a five-foot fish identified as a coelacanth, a living fossil thought to be extinct since the days of the dinosaurs. Since then, several live coelacanth have been discovered in African coastal waters."
+        },
+        {
+          "date": "1941",
+          "title": "World War II Research",
+          "description": "During World War II, electronic navigation systems are developed for precision bombing. A few years later, the Coast and Geodetic Survey conducts its first hydrographic surveys using these systems. Research during the war leads to many new tools for ocean exploration, including deep-ocean camera systems, early magnetometers, sidescan sonar instruments, and early technology for guiding Remotely Operated Vehicles (ROVs)."
+        },
+        {
+          "date": "1943",
+          "title": "The Aqua-Lung",
+          "description": "Underwater explorers Jacques Cousteau and Emile Gagnan develop the first modern scuba system. They modify a breathing regulator to create the Aqua-Lung. This ground breaking invention allows divers to stay underwater for extended periods and more effectively explore the ocean realm. This single event revolutionizes the science of underwater exploration."
+        },
+        {
+          "date": "1948",
+          "title": "First Untethered Deep Water Craft",
+          "description": "Swiss physicist Auguste Piccard dives in his newly designed vehicle known as a bathyscaphe. It is the first untethered craft to carry people into the oceans deep waters. His son, Jacques Piccard, would soon take the bathyscaphe to the deepest point in the ocean."
+        },
+        {
+          "date": "1951",
+          "title": "Deepest Ocean Point Found",
+          "description": "The British ship Challenger II bounces sound waves off the ocean bottom and locates what appears to be the sea's deepest point. Nearly seven miles down, it is subsequently named the Challenger Deep. Located off the coast of the Marianas Islands in the Pacific Ocean, the site is known today as the Marianas Trench. If you could put Mount Everest on the ocean floor in the Marianas Trench, its summit would lie about a mile below the ocean surface."
+        },
+        {
+          "date": "1953",
+          "title": "Discovery of Mid-Atlantic Ridge",
+          "description": "American geologist Marie Tharp studies sounding profiles from the Atlantic Ocean and discovers a rift valley. Later studies reveal it to be a continuous rift valley extending over 40,000 nautical miles along the ocean floor. This discovery provides evidence for the newly formed theory of continental drift, known today as plate tectonics."
+        },
+        {
+          "date": "February 15, 1954",
+          "title": "Untethered Submersible Dive Record",
+          "description": "The French submersible FNRS-3 sets a new record for an untethered deep sea dive as she descends to a depth of 13,290 feet (4.050 meters). The historic dive takes place in the Atlantic Ocean off the coast of Senegal in West Africa."
+        },
+        {
+          "date": "1955",
+          "title": "Magnetic Striping Discovered",
+          "description": "In a joint project with the U.S. Navy and the Scripps Institution of Oceanography, the Coast and Geodetic Survey Ship Pioneer tows the first marine magnetometer and discovers magnetic striping on the sea floor off the west coast of the United States. This discovery proves that the sea floor is spreading, providing significant credibility to the theory of plate tectonics."
+        },
+        {
+          "date": "January 23, 1960",
+          "title": "Deepest Ocean Dive",
+          "description": "Jacques Piccard, son of explorer August Piccard, and two other men descend into the ocean to a depth of 35,797 feet, nearly seven miles. They make the trip in the Trieste, a sturdy underwater vehicle known as a bathyscaphe. Trieste was designed by Piccard and built several years earlier. The divers discover fish and other amazing deep-sea life at these tremendous depths."
+        },
+        {
+          "date": "1961",
+          "title": "Tow System Developed",
+          "description": "The Scripps Institution of Oceanography begins development of the Deep Tow System. This sonar system becomes the forerunner of all remotely-operated and unmanned oceanographic systems today."
+        },
+        {
+          "date": "1962",
+          "title": "First Underwater Habitat",
+          "description": "Several experiments are conducted whereby people live in underwater habitats. The researchers leave the habitat for exploration and return again for food, sleep, and relaxation. The habitats are supplied by compressed air from the surface. In the first such experiment, Conshelf (Continental Shelf) One, Jacques Cousteau and his team spend seven days under 33 feet of water near Marseilles, France, in a habitat they name Diogenes."
+        },
+        {
+          "date": "1963",
+          "title": "First Multibeam Sounding",
+          "description": "The first operational multibeam sounding system is installed on the USNS Compass Island. This system observes a number of soundings to the left and right of a ship's head as well as vertically. This allows the development of a relatively accurate map of the sea floor as the ship proceeds on a survey line."
+        },
+        {
+          "date": "1964",
+          "title": "Deep Sea Submersible Alvin",
+          "description": "Alvin, a new deep submergence vehicle, is constructed by the Woods Hole Oceanographic Institute. It is the first U.S. deep diving submersible and the first deep-sea submersible capable of carrying passengers. Later that year, Alvin explores the Cayman Trough, the deepest point in the Caribbean Sea. Alvin becomes one of the most famous deep sea vehicles, making over 4,000 dives during its lifetime."
+        },
+        {
+          "date": "1965",
+          "title": "First Underwater Robot",
+          "description": "The Navy develops Halibut, a submarine that can lower miles of cables bearing lights, cameras, and other gear to spy on enemy armaments and material lost on the bottom of the sea."
+        },
+        {
+          "date": "August, 1968",
+          "title": "Deep Sea Drilling Program",
+          "description": "The deep sea research vessel Glomar Challenger departs on a 15 year expedition known as the Deep Sea Drilling Program. The ship criss-crosses the Mid-Atlantic Ridge between Africa and South America taking core samples. The ages of the samples are provides solid evidence for the theory of seafloor spreading, which would eventually give rise to the modern theory of plate tectonics."
+        },
+        {
+          "date": "July 14, 1969",
+          "title": "First Long Duration Submersible Expedition",
+          "description": "A manned underwater vehicle known as the Ben Franklin spends 30 days submerged off the coast of Palm Beach, Florida. A six-member crew led by the vehicle's creator, Jacques Piccard, study the Gulf Stream and travel a distance of 1,444 miles (2,324 km). The voyage also serves to study the effects of long-term, continuous close confinement for long space flights."
+        },
+        {
+          "date": "October, 1970",
+          "title": "NOAA Established",
+          "description": "The National Oceanic and Atmospheric Administration is established. This U.S. Government agency is responsible for all U.S. weather and climate forecasting, monitoring and archiving of ocean and atmospheric data, management of marine fisheries and mammals, mapping and charting of all U.S. waters, coastal zone management, and research and development in all of these areas."
+        }
+      ]
+    },
+    "1971 - 2012" : {
+      "start" : "1971",
+      "end" : "2012",
+      "events" : [
+        {
+          "date": "February 17, 1977",
+          "title": "Hydrothermal Vents Discovered",
+          "description": "Scientists aboard the deep sea submersible, Alvin, discover and document incredible deep sea hydrothermal vents in the eastern Pacific ocean. Scalding hot water pouring from these vents enriches the water with nutrients and provides food for bacteria and a host of other organisms. This discovery rocks the scientific community because, for the first time, an ecosystem has been found that thrives without the energy of the Sun. Instead of relying on sunlight and photosynthesis, these ecosystems thrive on chemical energy through a process known as chemosynthesis."
+        },
+        {
+          "date": "September 19, 1979",
+          "title": "Deepest Dive in Dive Suit",
+          "description": "Doctor Sylvia Earle sets a new record for a deep dive in a dive suit. Using a new pressurized metal suit known as a JIM suit, she walks unassisted at a depth of 1,250 feet (381 meters). Dr. Earle explores the depths off the coast of Oahu, Hawaii for two and a half hours with only a communication line connecting her to a submersible, and nothing connecting her to the world above."
+        },
+        {
+          "date": "July 20, 1985",
+          "title": "Atocha Found",
+          "description": "Famed treasure hunter Mel Fisher finds the wreck of the Atocha off the coast of the Florida Keys. Lying in only 55 feet of water, the Atocha would soon yield the biggest treasure ever recovered from a shipwreck. The discovery would come at a price, however. Mel loses his son, Dirk, Dirk's wife, and another crewmember in a tragic boating accident in 1975 while searching for the wreck of the Atocha."
+        },
+        {
+          "date": "September 1, 1985",
+          "title": "Titanic Found",
+          "description": "Dr. Robert Ballard, with the help of a tiny robotic submarine named Jason, discovers the wreck of the Titanic. The wreck is found in 12,500 feet (two and a half miles) of water about 375 miles off the coast of Newfoundland in Canada. Titanic is found in two separate pieces, dashing any hopes of one day raising the mighty ship."
+        },
+        {
+          "date": "1990",
+          "title": "Argo Project Begins",
+          "description": "A program known as Argo begins to deploy 3,000 robotic probes throughout the world's oceans to monitor climate, weather, and sea surface height. It is named after the mythical ship from the story of Jason and the Argonauts. The last probes are successfully placed in 2007."
+        },
+        {
+          "date": "1993",
+          "title": "Undersea Laboratory Aquarius",
+          "description": "An undersea habitat known as Aquarius begins operation off the coast of Key Largo, Florida. Aquarius resembles an underwater apartment and lab that can accommodate six-person teams during 10-day missions. Scientists  live, eat and sleep in the habitat and  work outside for six to nine hours each day. Aquarius operates until 1996 and helps revolutionize the study of coral reefs."
+        },
+        {
+          "date": "1995",
+          "title": "Seafloor Mapping from Space",
+          "description": "Declassification of Geosat satellite radar altimetry data leads to worldwide mapping of the sea floor from space by Walter Smith and Dave Sandwell. Their observed data significantly enhances accuracy over earlier images of the ocean basin."
+        },
+        {
+          "date": "2000",
+          "title": "Autosub is Launched",
+          "description": "The Southampton Oceanography Centre (SOC) develops and launches an automated robotic vehicle to study the oceans. Known as autosub, the autonomous submersible is equipped with an array of scientific sensors and is capable of carrying out pre-programmed missions. Because the vehicle if completely self-contained, it is capable of carrying traveling to regions of the ocean that were previously inaccessible."
+        },
+        {
+          "date": "January 6, 2009",
+          "title": "Marianas Trench National Monument",
+          "description": "President George W. Bush established the Marianas Trench National Monument. The monument contains no dry land but protects 95,216 square miles of ocean in the Mariana Archipelago. This area will rare hydrothermal vents as well as some of the few places in the world where chemosynthetic communities of life have been discovered."
+        },
+        {
+          "date": "2010",
+          "title": "Census of Marine Life Completed",
+          "description": "The first ever global census of marine life is completed. This 10 year project involves 2,700 scientists from 80 nations. The census reveals what, where, and how much lives and hides in global oceans and is made available in an online directory that allows anyone to map global addresses of species."
+        },
+        {
+          "date": "July 2011",
+          "title": "Mariana Trench Expedition",
+          "description": "An expedition crew returns to the Mariana Trench using modern submersibles. Among the new discoveries is a single-celled amoeba that measures an incredible 4 inches in diameter. Scientists also learn that trenches play a larger role in regulating the Earth's chemistry and climate than was previously thought."
+        },
+        {
+          "date": "2012",
+          "title": "Portable Underwater Habitat Developed",
+          "description": "National Geographic Society/Waitt grantee Michael Lombardi develops a portable underwater habitat that can assist divers with decompression. It provides divers with a comfortable environment to decompress as they return to the surface from deep dives. This new habitat will enable extended dives on deep coral reefs with minimal cost and infrastructure."
+        },
+        {
+          "date": "March 25, 2012",
+          "title": "First Solo Dive to the Mariana Trench",
+          "description": "Hollywood director James Cameron becomes the first person to perform a solo dive to the bottom of the Mariana Trench, the deepest point in the ocean. Cameron dives nearly seven miles and reaches a depth of 35,756 feet (10,898 meters). He spends three hours filming on the bottom of the trench before returning to the surface."
+        },
+        {
+          "date": "July 2012",
+          "title": "First Video of Giant Squid",
+          "description": "A Japanese expedition and film crew captures the first video of a giant live giant squid in its natural environment. This elusive creature is previously only seen when dead specimens wash ashore or are caught in fishing nets. The squid captured in the video measures only 9 feet (3 meters) in length, which is relatively small. Giant squid can grow to over 60 feet (18 meters) in length."
+        }
+      ]
+    }
+  }
+}
