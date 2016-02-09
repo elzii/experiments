@@ -1,0 +1,33 @@
+{
+  "name": "experiments",
+  "version": "0.0.0",
+  "homepage": "https://github.com/elzii/experiments",
+  "authors": [
+    "Alexander Zizzo <alex@fiftyandfifty.org>"
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "4.3.0",
+    "normalize.css": "*",
+    "animate.css": "*",
+    "jquery": "*",
+    "prefix-free": "gh-pages",
+    "modernizr": "*",
+    "wowjs": "*",
+    "object-fit": "~0.4.1",
+    "classie": "~1.0.1",
+    "highlight": "~9.1.0"
+  }
+}
