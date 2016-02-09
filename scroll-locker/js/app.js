@@ -26,6 +26,9 @@ var APP = (function () {
     $el : {
       body : $('body'),
 
+      alert: $('#alert'),
+
+      message: $('#message')
       
     },
 
@@ -47,6 +50,24 @@ var APP = (function () {
     setTimeout(function() {
       app.scrolling.enable()
     }, 3000)
+
+    var start = 2;
+
+    var timer = setInterval(function() {
+      if ( start==0 ) {
+        clearInterval(timer)
+        app.$el.alert
+          .removeClass('alert-danger')
+          .addClass('alert-success')
+        app.$el.message.html('Scrolling enabled')
+      }
+
+      app.$el.message.find('span').text(start)
+      start--;
+
+    }, 1000)
+
+
 
   }
 
